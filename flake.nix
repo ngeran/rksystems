@@ -58,7 +58,7 @@
             pname = "astro-app";
             version = "0.1.0";
             src = ./app;
-            npmDepsHash = "sha256-fn9BCUZyVYkQv244eXGHi0l7U7qNOx07qO0sLEAE/qQ=";  # from app/package-lock.json via just relock
+            npmDepsHash = "sha256-CTe1rny0UyujIc6yPUtL1p6gYby6mXc+FXTqKS8ndNA=";  # from app/package-lock.json via just relock
             env.ASTRO_TELEMETRY_DISABLED = "1";    # offline sandbox: never write $HOME / phone home
             installPhase = ''
               runHook preInstall

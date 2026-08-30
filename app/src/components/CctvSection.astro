@@ -1,5 +1,11 @@
 ---
+import { Image } from "astro:assets";
 import NumberedSection from "./NumberedSection.astro";
+
+// 1. Import local assets
+import colorvuImg from "../assets/colorvu-acusense.jpg";
+import nvrImg from "../assets/nvr-acuseek.jpeg";
+import dahuaImg from "../assets/Dahua_Cameras-Full-Colour_24_7.webp";
 
 const cctvCards = [
   {
@@ -12,7 +18,7 @@ const cctvCards = [
       { title: "AcuSense AI", desc: "Αναγνώριση ανθρώπων και οχημάτων με ακρίβεια 99%." },
       { title: "Audio 2.0", desc: "Αμφίδρομος ήχος & κορυφαία προστασία από διάβρωση." }
     ],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDBn4hrnN5aVbS0LzEQQjLhwS79GIbrX1i2PrOW5tdyB8O01_cdn8hlgLj1fUMs9SNkYyemgP-Ba91TodOsqVOMZ-glwgn_y8EGC0UreM5Qz79xBZSFAbRBoyglZlCEJadsQAqtgJFdCz3uYDuWQgiKMmQxpHq3aAXC7olsIkzfxBwXDgihDKaSbBK7cQ8TGVJQ_TIyeJkL8aq0GCQP-QoGSpkYukcY2O_kMcKVxDx42aEgTanrVc8ksiYi5BsJQ7wHAQ",
+    image: colorvuImg, // Reference imported variable
     alt: "Hikvision ColorVu camera asset"
   },
   {
@@ -25,7 +31,7 @@ const cctvCards = [
       { title: "Elasticsearch Engine", desc: "Άμεση ανεύρεση οχήματος/στόχου σε δευτερόλεπτα." },
       { title: "Hik-Connect App", desc: "Ζωντανή εικόνα και άμεσες ειδοποιήσεις στο κινητό σας." }
     ],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAgE3_2akAyhUIgQwNZxW6jSKEuRnkxwceqf_9Svzqi8fIG1cuWahZjxf3El8zsE4vqd4HTYUE8lzBUmvv4RI3bWdD_teMazgFvJtFmXVCL6TJIv03EwT0oQeUgfIFvNvVkUtyBgylPC9OLU7k79XqkzOGQ57kTWVEO_A5MEdxx47ogxHCnXvdhrnD56RUg0c9sKKKwITJcXAzm0AO40RrsFf8T7jdbVF2qcEC26f5IWsd4j7tvXgnsErVNe-FVRlRzqQ",
+    image: nvrImg, // Reference imported variable
     alt: "Hikvision AcuSeek NVR hardware"
   },
   {
@@ -38,27 +44,27 @@ const cctvCards = [
       { title: "Ενεργή Αποτροπή", desc: "Κόκκινο/Μπλε Flash Strobe και σειρήνα 110dB." },
       { title: "Smart Dual Light", desc: "Αυτόματη εναλλαγή IR και θερμού LED φωτός." }
     ],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDAyx8xfyDRRcYAGCL6R1-BuqGnG4_4CM_GS7o74p_KI4NoofvC7w3KWa3HIhVSAv16pcSqqB1uSBqPFm8S0OWnJZEaQCwBuDqBjCcIrgpvn6WyYqDZLnuOuRq344_cX8j0MTPwncZ32b6rJZSx19rvyaVNBchnddLe3tB6XYGfGpTU4NX7gyzkCzbdCuD0B0zQUYTZJKUabfSN4V0zwD76AOmpXNhW4VhTrNaNhMyBq6NGOqlfAKUMq5mQYlzUEqV-wg",
+    image: dahuaImg, // Reference imported variable
     alt: "Dahua Active Deterrence Camera product view"
   }
 ];
 ---
 
-<NumberedSection 
-  id="cctv" 
-  number="02" 
-  title="Κάμερες CCTV & AI Ανάλυση" 
+<NumberedSection
+  id="cctv"
+  number="02"
+  title="Κάμερες CCTV & AI Ανάλυση"
   tags={[{ label: "HIKVISION FOCUS" }, { label: "DAHUA SOLUTIONS", variant: "outline" }]}
 >
   <div class="pin-container relative -mx-md md:-mx-lg">
-    
+
     {/* Kurosawa Style Pagination Bar */}
     <div class="flex items-center justify-end gap-6 px-md md:px-lg mb-8">
       <div class="flex items-center gap-4">
         <div class="pin-dots flex items-center gap-2">
           {cctvCards.map((_, i) => (
-            <i 
-              data-index={i} 
+            <i
+              data-index={i}
               class={`dot h-1.5 rounded-full transition-all duration-500 ease-out bg-primary-container ${i === 0 ? 'w-6 opacity-100' : 'w-2 opacity-30'}`}
             ></i>
           ))}
@@ -69,12 +75,12 @@ const cctvCards = [
       </div>
     </div>
 
-    {/* Horizontal Track - Cards Identical to StarlinkSection */}
+    {/* Horizontal Track */}
     <div class="htrack flex flex-nowrap gap-10 px-md md:px-lg will-change-transform">
       {cctvCards.map((card) => (
         <div class="hcard flex-shrink-0 w-[90vw] md:w-[866px] border border-outline-variant bg-surface rounded-md flex flex-col group shadow-sm hover:shadow-md transition-shadow">
-          
-          {/* Top Info Bar (Exact Starlink Style) */}
+
+          {/* Top Info Bar */}
           <div class="p-5 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest rounded-t-md">
             <div class="flex gap-2 font-mono-sm text-[11px] uppercase tracking-wider">
               <span class="bg-primary-container text-on-primary-container px-2 py-1 rounded-sm font-bold">{card.tag}</span>
@@ -83,9 +89,9 @@ const cctvCards = [
             <span class="text-mono-sm text-on-surface-variant font-mono-sm font-bold">{card.code}</span>
           </div>
 
-          {/* Contents Grid (Exact Starlink Style) */}
+          {/* Contents Grid */}
           <div class="grid grid-cols-1 md:grid-cols-2 flex-1">
-            
+
             {/* Specs left */}
             <div class="p-8 flex flex-col gap-6">
               <div class="font-mono-sm text-headline-lg-mobile tracking-widest text-on-surface border-b border-outline-variant pb-4 uppercase">
@@ -111,11 +117,13 @@ const cctvCards = [
               </ul>
             </div>
 
-            {/* Image right */}
+            {/* Image right - 2. Updated to Astro <Image /> */}
             <div class="h-72 md:h-auto border-t md:border-t-0 md:border-l border-outline-variant relative overflow-hidden">
-              <img 
-                src={card.image} 
-                alt={card.alt} 
+              <Image
+                src={card.image}
+                alt={card.alt}
+                width={800} 
+                height={600}
                 class="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                 loading="lazy"
               />
@@ -129,6 +137,7 @@ const cctvCards = [
   </div>
 </NumberedSection>
 
+<!-- Scripts and Styles remain identical -->
 <script>
   import gsap from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -141,7 +150,7 @@ const cctvCards = [
       const section = document.querySelector('#cctv');
       const dots = document.querySelectorAll('.dot');
       const currentIdxText = document.querySelector('#current-idx');
-      
+
       if (!track || !section) return;
 
       const cardCount = dots.length;
@@ -159,7 +168,6 @@ const cctvCards = [
           onUpdate: (self) => {
             const activeIndex = Math.min(Math.floor(self.progress * cardCount), cardCount - 1);
 
-            // Triple size logic: active 24px (w-6), inactive 8px (w-2)
             dots.forEach((dot, i) => {
               const htmlDot = dot as HTMLElement;
               if (i === activeIndex) {
