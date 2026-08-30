@@ -1,0 +1,74 @@
+---
+---
+<section class="relative w-full min-h-[85vh] flex items-center bg-background overflow-hidden border-b border-outline-variant">
+  
+  <!-- Right Background Image Container -->
+  <div class="absolute inset-0 lg:left-[45%] h-full z-0 overflow-hidden">
+    <img 
+      src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBn4hrnN5aVbS0LzEQQjLhwS79GIbrX1i2PrOW5tdyB8O01_cdn8hlgLj1fUMs9SNkYyemgP-Ba91TodOsqVOMZ-glwgn_y8EGC0UreM5Qz79xBZSFAbRBoyglZlCEJadsQAqtgJFdCz3uYDuWQgiKMmQxpHq3aAXC7olsIkzfxBwXDgihDKaSbBK7cQ8TGVJQ_TIyeJkL8aq0GCQP-QoGSpkYukcY2O_kMcKVxDx42aEgTanrVc8ksiYi5BsJQ7wHAQ" 
+      alt="RK Security and Network Bleed Asset" 
+      class="w-full h-full object-cover grayscale-[0.25] contrast-[1.05] brightness-75 lg:brightness-100 hero-bg-mask"
+    />
+    <!-- Solid dark gradient layout support on top of bleed for readability -->
+    <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent lg:hidden z-10"></div>
+  </div>
+
+  <!-- Hero Content Overlaid on top of masked background -->
+  <div class="w-full max-w-[1280px] mx-auto px-md md:px-lg relative z-20 pt-16 pb-12 lg:py-0">
+    <div class="max-w-[700px] flex flex-col items-start text-left">
+      
+      <!-- Top Tagline -->
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-1.5 h-12 bg-primary-container"></div>
+        <div class="flex flex-col">
+          <p class="font-mono-sm text-[12px] uppercase tracking-[0.2em] text-on-surface-variant font-bold leading-none">
+            RK SYSTEMS
+          </p>
+          <p class="font-mono-sm text-[10px] uppercase tracking-[0.15em] text-primary font-bold mt-1">
+            ΕΞΕΙΔΙΚΕΥΣΗ & ΤΕΧΝΙΚΗ ΑΞΙΟΠΙΣΤΙΑ
+          </p>
+        </div>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-display font-display text-on-surface mb-6 tracking-tighter leading-[1.05] font-black uppercase text-balance">
+        Συστήματα <br />
+        Ασφαλείας &amp; <br />
+        <span class="bg-primary-container text-on-primary-container px-3 pb-1 mt-1 inline-block">Εταιρικά Δίκτυα</span>
+      </h1>
+
+      <!-- Sub text desc -->
+      <div class="border-l-2 border-outline/35 pl-6 mb-8 max-w-[550px]">
+        <p class="text-body-lg text-on-surface-variant leading-relaxed">
+          Μελέτη και εγκατάσταση καμερών Hikvision ColorVu &amp; AcuSense, ασύρματων συναγερμών AX PRO / Ajax, δομημένης καλωδίωσης UniFi / MikroTik και δορυφορικού Internet Starlink.
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap gap-4 w-full sm:w-auto">
+        <a 
+          href="#quote" 
+          class="w-full sm:w-auto bg-on-background text-surface-container-lowest font-mono-sm text-[12px] font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-primary hover:text-on-primary transition-all rounded-xs text-center shadow-lg"
+        >
+          Δωρεάν Μελέτη Χώρου
+        </a>
+        <a 
+          href="#about" 
+          class="w-full sm:w-auto bg-surface-container-lowest/80 border border-outline-variant text-on-surface font-mono-sm text-[12px] font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-surface rounded-xs text-center transition-all"
+        >
+          Η Εμπειρία μας
+        </a>
+      </div>
+
+      <!-- Bottom badges -->
+      <div class="mt-12 flex flex-wrap gap-2">
+        {["CCTV", "ALARMS", "INTERCOMS", "NETWORKS", "STARLINK", "SMART AUDIO"].map((tag) => (
+          <span class="bg-surface-container-low text-on-surface-variant border border-outline-variant text-[10px] font-mono-sm font-bold px-3 py-1.5 rounded-sm uppercase tracking-wider">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>

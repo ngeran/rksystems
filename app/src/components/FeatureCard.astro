@@ -1,0 +1,81 @@
+---
+interface Badge {
+  label: string;
+  variant?: "primary" | "neutral";
+}
+
+interface Bullet {
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  badges: Badge[];
+  code: string;
+  kicker: string;
+  heading: string;
+  bullets: Bullet[];
+  imageSrc: string;
+  imageAlt: string;
+}
+
+const { badges, code, kicker, heading, bullets, imageSrc, imageAlt } = Astro.props;
+---
+<div class="border border-outline-variant bg-surface rounded-md flex flex-col group shadow-sm hover:shadow-md transition-shadow h-full justify-between">
+  
+  <div>
+    <!-- Top badge bar -->
+    <div class="p-5 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest rounded-t-md">
+      <div class="flex gap-2 font-mono-sm text-[11px] uppercase tracking-wider">
+        {
+          badges.map((badge) => (
+            <span class={`px-2 py-1 rounded-sm ${
+              badge.variant === "neutral" 
+                ? "bg-surface-variant text-on-surface-variant" 
+                : "bg-primary-container text-on-primary-container font-bold"
+            }`}>
+              {badge.label}
+            </span>
+          ))
+        }
+      </div>
+      <span class="text-mono-sm text-on-surface-variant font-mono-sm font-bold">{code}</span>
+    </div>
+
+    <!-- Kicker, Title, Bullet Details -->
+    <div class="p-8 flex flex-col gap-6">
+      <div class="font-mono-sm text-headline-lg-mobile tracking-widest text-on-surface border-b border-outline-variant pb-4 uppercase">
+        {kicker}
+      </div>
+      <h3 class="text-body-lg font-bold text-on-surface uppercase tracking-wider">{heading}</h3>
+      <ul class="flex flex-col gap-4 mt-2">
+        {
+          bullets.map((bullet) => (
+            <li class="flex items-start gap-3">
+              <span class="text-primary-container font-mono-sm mt-1 text-lg leading-none">▪</span>
+              <div>
+                <span class="font-mono-sm text-[12px] font-bold text-on-surface block uppercase tracking-wider mb-1">
+                  {bullet.title}
+                </span>
+                <span class="font-body-md text-[14px] text-on-surface-variant leading-relaxed">
+                  {bullet.desc}
+                </span>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <!-- Unclipped Bottom Image -->
+  <div class="h-56 border-t border-outline-variant relative overflow-hidden rounded-b-md min-h-[220px]">
+    <img 
+      src={imageSrc} 
+      alt={imageAlt} 
+      class="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+      loading="lazy"
+    />
+  </div>
+
+</div>

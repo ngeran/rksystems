@@ -1,0 +1,57 @@
+---
+interface Tag {
+  label: string;
+  variant?: "filled" | "outline";
+}
+
+interface Props {
+  id: string;
+  number: string;
+  title: string;
+  tags?: Tag[];
+  bg?: "default" | "muted" | "accent";
+}
+
+const { id, number, title, tags = [], bg = "default" } = Astro.props;
+
+const bgClass =
+  bg === "muted"
+    ? "bg-surface-container-low"
+    : bg === "accent"
+      ? "bg-primary-container"
+      : "";
+---
+
+<section id={id} class:list={["w-full py-24 relative border-b border-outline-variant", bgClass]}>
+  <div class="max-w-[1280px] mx-auto px-lg flex flex-col lg:flex-row gap-16">
+    <div class="w-full lg:w-48 flex-shrink-0">
+      <span class="text-[140px] font-display text-primary-container leading-none tracking-tighter block -mt-8">
+        {number}
+      </span>
+    </div>
+    <div class="flex-1">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-outline-variant gap-4">
+        <h2 class="text-[40px] leading-none font-display text-on-surface tracking-tight uppercase">{title}</h2>
+        {
+          tags.length > 0 && (
+            <div class="flex gap-3">
+              {tags.map((tag) => (
+                <span
+                  class:list={[
+                    "text-label-md font-mono-sm uppercase tracking-widest px-3 py-1 rounded-sm",
+                    tag.variant === "outline"
+                      ? "text-on-surface-variant border border-outline-variant"
+                      : "text-on-surface bg-surface-variant",
+                  ]}
+                >
+                  {tag.label}
+                </span>
+              ))}
+            </div>
+          )
+        }
+      </div>
+      <slot />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+---
+const brands = [
+  "Hikvision",
+  "Ajax Systems",
+  "Ubiquiti UniFi",
+  "TP-Link Omada",
+  "MikroTik",
+  "Dahua Solutions",
+  "Sonos Audio",
+  "Sonance Sound",
+  "Starlink Satellite"
+];
+---
+<div class="marquee w-full border-b border-outline-variant bg-on-surface py-5" aria-hidden="true">
+  <div class="marquee-track flex items-center">
+    {
+      [...brands, ...brands].map((brand) => (
+        <>
+          <span class="font-mono-sm text-[13px] tracking-widest uppercase text-surface-container-lowest font-bold px-8">
+            {brand}
+          </span>
+          <span class="font-mono-sm text-[13px] text-primary-container font-black px-1">//</span>
+        </>
+      ))
+    }
+  </div>
+</div>

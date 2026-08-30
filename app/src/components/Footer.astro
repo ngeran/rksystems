@@ -1,0 +1,77 @@
+---
+const categories = [
+  "Hikvision ColorVu & AcuSense 3.0",
+  "Hikvision Smart IP Θυροτηλεοράσεις",
+  "Hikvision AX PRO Wireless",
+  "Ajax Systems Grade 2",
+  "Ubiquiti UniFi & TP-Link Omada",
+  "MikroTik Core Routing",
+  "Εγκαταστάσεις Starlink Internet",
+  "Sonos Multi-Room Sound"
+];
+---
+<footer class="w-full bg-on-background text-surface-container-lowest/80 py-16 border-t border-outline-variant">
+  <div class="max-w-[1280px] mx-auto px-md md:px-lg">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+      
+      <!-- Brand column -->
+      <div class="flex flex-col gap-4">
+        <span class="font-mono-sm text-mono-sm font-bold tracking-widest text-surface-container-lowest uppercase block">
+          RK.SYSTEMS
+        </span>
+        <p class="font-mono-sm text-[12px] leading-relaxed text-on-surface-variant max-w-[340px]">
+          Εξειδικευμένες λύσεις ηλεκτρονικής ασφάλειας, καμερών AI, ασύρματων συναγερμών, Smart IP θυροτηλεοράσεων, εταιρικών δικτύων, Starlink &amp; multi-room ήχου. Με έδρα το Περιστέρι, εξυπηρετούμε άμεσα όλη την Αττική.
+        </p>
+      </div>
+
+      <!-- Specialized Tech Column -->
+      <div class="flex flex-col gap-4">
+        <h4 class="font-mono-sm text-mono-sm uppercase tracking-widest text-surface-container-lowest font-bold">
+          Εξειδίκευση
+        </h4>
+        <ul class="flex flex-col gap-2">
+          {categories.map((cat) => (
+            <li class="font-mono-sm text-[12px] text-on-surface-variant flex items-center gap-2">
+              <span class="text-primary-container font-black text-[10px] leading-none">▪</span>
+              {cat}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contacts Column -->
+      <div class="flex flex-col gap-4">
+        <h4 class="font-mono-sm text-mono-sm uppercase tracking-widest text-surface-container-lowest font-bold">
+          Επικοινωνία
+        </h4>
+        <ul class="flex flex-col gap-4">
+          <li class="font-mono-sm text-[12px] text-on-surface-variant flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-primary-container text-[16px] mt-0.5">location_on</span>
+            Έδρα: Περιστέρι, Αττική
+          </li>
+          <li>
+            <a href="tel:+30210XXXXXXX" class="font-mono-sm text-[12px] text-on-surface-variant flex items-center gap-2.5 hover:text-primary-container transition-colors">
+              <span class="material-symbols-outlined text-primary-container text-[16px]">call</span>
+              +30 210 XXXXXXX
+            </a>
+          </li>
+          <li>
+            <a href="mailto:info@rk-security.gr" class="font-mono-sm text-[12px] text-on-surface-variant flex items-center gap-2.5 hover:text-primary-container transition-colors">
+              <span class="material-symbols-outlined text-primary-container text-[16px]">mail</span>
+              info@rk-security.gr
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="border-t border-white/10 pt-8 text-center">
+      <p class="font-mono-sm text-[11px] uppercase tracking-wider text-on-surface-variant">
+        &copy; 2026 RK - Security & Network Solutions. Με επιφύλαξη παντός δικαιώματος.
+      </p>
+    </div>
+
+  </div>
+</footer>

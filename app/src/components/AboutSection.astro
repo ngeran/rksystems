@@ -1,0 +1,102 @@
+---
+import NumberedSection from "./NumberedSection.astro";
+
+const statistics = [
+  { value: "100%", label: "Rack Management", sub: "Άψογη Οργάνωση" },
+  { value: "24/7", label: "Τεχνική Υποστήριξη", sub: "Διαρκής Επίβλεψη" },
+  { value: "6+", label: "Κατηγορίες Έργων", sub: "Ολοκληρωμένη Κάλυψη" },
+  { value: "0", label: "Τυφλά Σημεία", sub: "Ολοκληρωμένη Μελέτη" }
+];
+
+const pillars = [
+  {
+    icon: "verified",
+    title: "Επώνυμο Hardware",
+    desc: "Χρήση αποκλειστικά κορυφαίων κατασκευαστών (Hikvision, Ajax, UniFi, MikroTik, TP-Link, Sonos, Sonance)."
+  },
+  {
+    icon: "cable",
+    title: "Προσεγμένη Εγκατάσταση",
+    desc: "Απόλυτος σεβασμός στην αισθητική του χώρου, χωρίς περιττά ή εκτεθειμένα καλώδια."
+  },
+  {
+    icon: "lan",
+    title: "Παραμετροποίηση Δικτύου",
+    desc: "Διαχωρισμός VLANs, ασφάλεια POS, QoS και Wi-Fi Guest Portals."
+  },
+  {
+    icon: "gpp_good",
+    title: "Επίσημη Εγγύηση",
+    desc: "Πλήρης κάλυψη επίσημης αντιπροσωπείας και άμεση τεχνική απόκριση."
+  }
+];
+---
+<NumberedSection 
+  id="about" 
+  number="01" 
+  title="Η Εταιρεία" 
+  tags={[{ label: "RK SOLUTIONS" }, { label: "TEXNOTNΩΣΙΑ & ΣΥΝΕΠΕΙΑ", variant: "outline" }]}
+  bg="muted"
+>
+  <div class="flex flex-col gap-12">
+    
+    <!-- Core Description Text -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+      <div class="flex flex-col gap-4">
+        <h3 class="text-headline-md font-display text-on-surface uppercase tracking-tight">
+          Τεχνογνωσία, Συνέπεια & Εμπειρία σε Σύνθετα Έργα
+        </h3>
+        <p class="text-body-md text-on-surface-variant leading-relaxed">
+          Στην <strong>RK - Security & Network Solutions</strong> διαθέτουμε πολυετή εμπειρία στη μελέτη, εγκατάσταση και συντήρηση σύγχρονων ηλεκτρονικών συστημάτων. Έχουμε υλοποιήσει δεκάδες έργα σε μονοκατοικίες, πολυκατοικίες, εμπορικά καταστήματα, γραφεία και αποθηκευτικούς χώρους σε όλη την Αττική.
+        </p>
+      </div>
+      <div class="flex flex-col gap-4 border-l-2 border-outline-variant pl-6">
+        <p class="text-body-md text-on-surface-variant leading-relaxed">
+          Προσφέρουμε <strong>ολοκληρωμένη τεχνική προσέγγιση</strong>: από τη σωστή κάλυψη καμερών χωρίς τυφλά σημεία, μέχρι το άψογο cable management σε Server Racks, το routing πολλαπλών γραμμών internet και τη διαρκή υποστήριξη μετά την παράδοση του έργου.
+        </p>
+      </div>
+    </div>
+
+    <!-- Statistics Grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      {statistics.map((stat) => (
+        <div class="bg-surface border border-outline-variant rounded-xs p-6 text-center hover:border-primary-container transition-all">
+          <span class="block text-display font-display font-black text-on-surface tracking-tighter leading-none mb-1">
+            {stat.value}
+          </span>
+          <span class="block font-mono-sm text-[11px] font-bold text-on-surface uppercase tracking-wider">
+            {stat.label}
+          </span>
+          <span class="block font-mono-sm text-[9px] text-on-surface-variant uppercase tracking-wider mt-1">
+            {stat.sub}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Pillars grid -->
+    <div class="flex flex-col gap-6 pt-6 border-t border-outline-variant">
+      <h4 class="font-mono-sm text-mono-sm text-on-surface-variant uppercase tracking-wider font-bold">
+        Γιατί να μας επιλέξετε
+      </h4>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {pillars.map((p) => (
+          <div class="bg-surface-container-lowest border border-outline-variant rounded-xs p-6 flex flex-col gap-4 hover:border-primary-container transition-colors">
+            <span class="material-symbols-outlined text-[28px] text-primary">
+              {p.icon}
+            </span>
+            <div class="flex flex-col gap-2">
+              <span class="font-mono-sm text-[12px] font-bold text-on-surface uppercase tracking-wide">
+                {p.title}
+              </span>
+              <p class="font-mono-sm text-[11px] text-on-surface-variant leading-relaxed">
+                {p.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</NumberedSection>

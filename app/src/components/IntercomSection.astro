@@ -1,0 +1,70 @@
+---
+import NumberedSection from "./NumberedSection.astro";
+---
+<NumberedSection 
+  id="intercom" 
+  number="04" 
+  title="Smart IP Θυροτηλεοράσεις" 
+  tags={[{ label: "HIKVISION IP & 2-WIRE" }]}
+>
+  <div class="border border-outline-variant bg-surface rounded-md flex flex-col group shadow-sm hover:shadow-md transition-shadow">
+    
+    <!-- Top info bar -->
+    <div class="p-5 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest rounded-t-md">
+      <div class="flex gap-2 font-mono-sm text-[11px] uppercase tracking-wider">
+        <span class="bg-primary-container text-on-primary-container px-2 py-1 rounded-sm font-bold">HIKVISION</span>
+        <span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded-sm">IP INTERCOM</span>
+      </div>
+      <span class="text-mono-sm text-on-surface-variant font-mono-sm font-bold">HW.INT</span>
+    </div>
+
+    <!-- Grid contents -->
+    <div class="grid grid-cols-1 lg:grid-cols-2">
+      
+      <!-- Text details -->
+      <div class="p-8 flex flex-col gap-6">
+        <div class="font-mono-sm text-headline-lg-mobile tracking-widest text-on-surface border-b border-outline-variant pb-4 uppercase">
+          ENTRY CONTROL SYSTEMS
+        </div>
+        <h3 class="text-body-lg font-bold text-on-surface uppercase tracking-wider">
+          Έλεγχος Εισόδου & Απομακρυσμένο Άνοιγμα Πόρτας
+        </h3>
+        <p class="font-mono-sm text-[12px] text-on-surface-variant leading-relaxed">
+          Αναβάθμιση παλαιών θυροτηλεφώνων σε υπερσύγχρονα συστήματα <strong>Hikvision IP / 2-Wire HD</strong> για μονοκατοικίες, μεζονέτες και πολυκατοικίες.
+        </p>
+        <ul class="flex flex-col gap-4 mt-2">
+          {[
+            { title: "Άνοιγμα από το Κινητό", desc: "Απάντηση κλήσης και άνοιγμα πόρτας από οπουδήποτε μέσω Hik-Connect." },
+            { title: "Τεχνολογία 2-Wire HD", desc: "Εγκατάσταση στην υπάρχουσα καλωδίωση χωρίς μερεμέτια." },
+            { title: "Access Control", desc: "Είσοδος με κάρτα RFID, κωδικό PIN ή αναγνώριση προσώπου." },
+            { title: "Σύνδεση με CCTV", desc: "Καταγραφή εικόνας και ήχου της εισόδου στο κεντρικό NVR." }
+          ].map((bullet) => (
+            <li class="flex items-start gap-3">
+              <span class="text-primary-container font-mono-sm mt-1 text-lg leading-none">▪</span>
+              <div>
+                <span class="font-mono-sm text-[12px] font-bold text-on-surface block uppercase tracking-wider mb-1">
+                  {bullet.title}
+                </span>
+                <span class="font-body-md text-[14px] text-on-surface-variant">
+                  {bullet.desc}
+                </span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Image Area -->
+      <div class="h-72 lg:h-auto border-t lg:border-t-0 lg:border-l border-outline-variant relative overflow-hidden min-h-[300px]">
+        <img 
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAyx8xfyDRRcYAGCL6R1-BuqGnG4_4CM_GS7o74p_KI4NoofvC7w3KWa3HIhVSAv16pcSqqB1uSBqPFm8S0OWnJZEaQCwBuDqBjCcIrgpvn6WyYqDZLnuOuRq344_cX8j0MTPwncZ32b6rJZSx19rvyaVNBchnddLe3tB6XYGfGpTU4NX7gyzkCzbdCuD0B0zQUYTZJKUabfSN4V0zwD76AOmpXNhW4VhTrNaNhMyBq6NGOqlfAKUMq5mQYlzUEqV-wg" 
+          alt="Hikvision Video Intercom module station" 
+          class="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+          loading="lazy"
+        />
+      </div>
+
+    </div>
+
+  </div>
+</NumberedSection>

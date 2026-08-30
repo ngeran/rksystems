@@ -1,0 +1,138 @@
+---
+const servicesList = [
+  { value: "cctv", label: "Κάμερες CCTV (Hikvision ColorVu / AcuSense / Dahua)" },
+  { value: "alarm", label: "Σύστημα Συναγερμού (Hikvision AX PRO / Ajax)" },
+  { value: "intercom", label: "Smart IP Θυροτηλεόραση (Hikvision / Dahua)" },
+  { value: "network", label: "Επαγγελματικό Δίκτυο / Wi-Fi (UniFi / TP-Link / MikroTik)" },
+  { value: "starlink", label: "Εγκατάσταση Starlink Satellite Internet" },
+  { value: "audio", label: "Smart Home & Sonos Audio Solutions" },
+  { value: "full", label: "Ολοκληρωμένο Έργο (Ασφάλεια + Δίκτυο + Starlink + Ήχος)" }
+];
+---
+<section id="quote" class="w-full py-20 lg:py-24 bg-surface-container-low border-b border-outline-variant">
+  <div class="max-w-[850px] mx-auto px-md md:px-lg">
+    
+    <!-- Title -->
+    <div class="text-center mb-10">
+      <h2 class="text-headline-lg font-display text-on-surface tracking-tight uppercase mb-3">
+        Αίτηση Δωρεάν Αυτοψίας &amp; Μελέτης
+      </h2>
+      <p class="text-body-lg text-on-surface-variant max-w-[600px] mx-auto">
+        Εξυπηρέτηση σε Περιστέρι, Δυτικά Προάστια και όλη την Αττική.
+      </p>
+    </div>
+
+    <!-- Booking form -->
+    <form id="quote-form" class="bg-surface border border-outline-variant rounded-md p-6 md:p-10 shadow-sm flex flex-col gap-6">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Input Name -->
+        <div class="flex flex-col gap-2">
+          <label for="q-name" class="font-mono-sm text-[12px] font-bold uppercase tracking-wider text-on-surface">
+            Ονοματεπώνυμο *
+          </label>
+          <input 
+            id="q-name" 
+            name="name" 
+            type="text" 
+            required 
+            placeholder="π.χ. Νίκος Καραχάλιος" 
+            class="px-4 py-3 border border-outline-variant rounded-xs bg-surface-container-low text-on-surface text-body-md outline-none focus:border-primary transition-all"
+          />
+        </div>
+
+        <!-- Input Phone -->
+        <div class="flex flex-col gap-2">
+          <label for="q-phone" class="font-mono-sm text-[12px] font-bold uppercase tracking-wider text-on-surface">
+            Τηλέφωνο Επικοινωνίας *
+          </label>
+          <input 
+            id="q-phone" 
+            name="phone" 
+            type="tel" 
+            required 
+            placeholder="π.χ. 69XXXXXXXX" 
+            class="px-4 py-3 border border-outline-variant rounded-xs bg-surface-container-low text-on-surface text-body-md outline-none focus:border-primary transition-all"
+          />
+        </div>
+
+        <!-- Input Location -->
+        <div class="flex flex-col gap-2">
+          <label for="q-area" class="font-mono-sm text-[12px] font-bold uppercase tracking-wider text-on-surface">
+            Περιοχή Εγκατάστασης *
+          </label>
+          <input 
+            id="q-area" 
+            name="area" 
+            type="text" 
+            required 
+            placeholder="π.χ. Περιστέρι, Αιγάλεω, Ίλιον..." 
+            class="px-4 py-3 border border-outline-variant rounded-xs bg-surface-container-low text-on-surface text-body-md outline-none focus:border-primary transition-all"
+          />
+        </div>
+
+        <!-- Input Service -->
+        <div class="flex flex-col gap-2">
+          <label for="q-service" class="font-mono-sm text-[12px] font-bold uppercase tracking-wider text-on-surface">
+            Ενδιαφέρον για Υπηρεσία *
+          </label>
+          <select 
+            id="q-service" 
+            name="service" 
+            required 
+            class="px-4 py-3 border border-outline-variant rounded-xs bg-surface-container-low text-on-surface text-body-md outline-none focus:border-primary transition-all"
+          >
+            <option value="">Επιλέξτε...</option>
+            {servicesList.map((service) => (
+              <option value={service.value}>{service.label}</option>
+            ))}
+          </select>
+        </div>
+
+        <!-- Textarea notes -->
+        <div class="flex flex-col gap-2 md:col-span-2">
+          <label for="q-notes" class="font-mono-sm text-[12px] font-bold uppercase tracking-wider text-on-surface">
+            Περιγραφή Αναγκών / Χώρου
+          </label>
+          <textarea 
+            id="q-notes" 
+            name="notes" 
+            rows="4" 
+            placeholder="Αναφέρετε αν πρόκειται για οικία, πολυκατοικία, κατάστημα, αποθήκη ή γραφείο..." 
+            class="px-4 py-3 border border-outline-variant rounded-xs bg-surface-container-low text-on-surface text-body-md outline-none focus:border-primary transition-all resize-y"
+          ></textarea>
+        </div>
+
+      </div>
+
+      <!-- Submit button -->
+      <button 
+        type="submit" 
+        class="w-full bg-on-background text-surface font-mono-sm text-[13px] font-bold tracking-widest uppercase py-4.5 rounded-xs hover:bg-primary hover:text-on-primary transition-all shadow-sm"
+      >
+        Υποβολή Αιτήματος Μελέτης
+      </button>
+
+      <!-- Status prompt -->
+      <p id="form-success" class="hidden font-mono-sm text-mono-sm text-center text-on-surface p-4 bg-surface-container-low border border-outline-variant mt-2 rounded-xs">
+        <span class="material-symbols-outlined text-[16px] text-primary align-middle mr-2">check_circle</span>
+        Ευχαριστούμε! Το αίτημά σας καταχωρήθηκε. Θα επικοινωνήσουμε άμεσα μαζί σας.
+      </p>
+
+    </form>
+  </div>
+</section>
+
+<script>
+  const quoteForm = document.getElementById("quote-form") as HTMLFormElement | null;
+  const statusPrompt = document.getElementById("form-success");
+
+  quoteForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (statusPrompt) {
+      statusPrompt.classList.remove("hidden");
+    }
+    quoteForm.reset();
+  });
+</script>

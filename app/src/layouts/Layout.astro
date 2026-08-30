@@ -1,0 +1,118 @@
+---
+import TopBar from "../components/TopBar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+}
+
+const { title = "RK - Security & Network Solutions" } = Astro.props;
+
+const menuLinks = [
+  { href: "#about", text: "Σχετικά" },
+  { href: "#cctv", text: "CCTV" },
+  { href: "#alarms", text: "Συναγερμοί" },
+  { href: "#intercom", text: "Θυροτηλεοράσεις" },
+  { href: "#networks", text: "Δίκτυα" },
+  { href: "#starlink", text: "Starlink" },
+  { href: "#smarthome", text: "Ήχος" },
+];
+---
+
+<!doctype html>
+<html lang="el">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-background text-on-surface flex flex-col min-h-screen">
+    <TopBar />
+    
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant h-16 flex items-center transition-all duration-300">
+      <div class="w-full max-w-[1280px] mx-auto px-md md:px-lg flex items-center justify-between">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2">
+          <div class="bg-primary-container text-on-primary-container p-1 rounded-xs flex items-center justify-center font-bold font-mono-sm w-8 h-8">
+            RK
+          </div>
+          <div class="flex flex-col">
+            <span class="font-mono-sm text-mono-sm font-bold text-on-surface tracking-wider leading-none">RK.SYSTEMS</span>
+            <span class="text-[9px] uppercase tracking-widest text-on-surface-variant font-bold">Security & Network</span>
+          </div>
+        </a>
+
+        <!-- Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-1">
+          {menuLinks.map((link) => (
+            <a href={link.href} class="px-3 py-2 text-mono-sm font-mono-sm font-bold uppercase tracking-wider text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-sm transition-all duration-200">
+              {link.text}
+            </a>
+          ))}
+        </nav>
+
+        <!-- CTA & Mobile Toggle -->
+        <div class="flex items-center gap-4">
+          <a href="#quote" class="hidden sm:inline-flex bg-on-background text-surface-container-lowest font-mono-sm text-[11px] font-bold uppercase tracking-widest py-2.5 px-5 hover:bg-primary-container hover:text-on-primary-container transition-all rounded-xs">
+            Αίτηση Αυτοψίας
+          </a>
+          
+          <button id="menu-toggle" class="lg:hidden p-2 text-on-surface" aria-label="Toggle Navigation Menu">
+            <span class="material-symbols-outlined text-[24px]">menu</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu dropdown -->
+    <div id="mobile-menu" class="hidden fixed inset-0 top-16 bg-surface/98 backdrop-blur-xl z-40 lg:hidden flex flex-col p-6 border-b border-outline-variant transition-all">
+      <div class="flex flex-col gap-4 mt-4">
+        {menuLinks.map((link) => (
+          <a href={link.href} class="mobile-link text-headline-md font-display text-on-surface py-2 border-b border-outline-variant/30">
+            {link.text}
+          </a>
+        ))}
+        <a href="#quote" class="mobile-link mt-6 w-full text-center bg-primary-container text-on-primary-container font-mono-sm font-bold py-4 rounded-xs uppercase tracking-widest">
+          Αίτηση Αυτοψίας
+        </a>
+      </div>
+    </div>
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script>
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const links = document.querySelectorAll('.mobile-link');
+
+      toggle?.addEventListener('click', () => {
+        const icon = toggle.querySelector('.material-symbols-outlined');
+        if (menu?.classList.contains('hidden')) {
+          menu.classList.remove('hidden');
+          if (icon) icon.textContent = 'close';
+        } else {
+          menu?.classList.add('hidden');
+          if (icon) icon.textContent = 'menu';
+        }
+      });
+
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          menu?.classList.add('hidden');
+          const icon = toggle?.querySelector('.material-symbols-outlined');
+          if (icon) icon.textContent = 'menu';
+        });
+      });
+    </script>
+  </body>
+</html>

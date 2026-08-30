@@ -1,0 +1,48 @@
+---
+const monitors = [
+  "Άμεση κλήση Αστυνομίας & Άμεσης Δράσης",
+  "Video Verification με ζωντανή επιβεβαίωση",
+  "Ειδοποίηση διακοπής / επαναφοράς ρεύματος",
+  "Έλεγχος σωστής όπλισης / αφόπλισης"
+];
+---
+<section id="monitoring" class="w-full py-20 lg:py-24 relative bg-primary-container border-b border-outline-variant">
+  <div class="max-w-[1280px] mx-auto px-md md:px-lg">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+      
+      <!-- Left side badges -->
+      <div class="flex flex-col gap-4 min-w-[200px]">
+        <div class="flex gap-2 font-mono-sm text-[11px] uppercase tracking-wider">
+          <span class="bg-on-surface text-surface px-2 py-1 rounded-sm font-bold">ARC SERVICES</span>
+          <span class="border border-on-surface/20 text-on-surface px-2 py-1 rounded-sm font-bold">24/7 LIVE</span>
+        </div>
+        <span class="text-[90px] lg:text-[130px] font-display text-on-surface tracking-tighter leading-none -mt-4 select-none">
+          08
+        </span>
+      </div>
+
+      <!-- Right side Content -->
+      <div class="flex-1 flex flex-col gap-6">
+        <h2 class="text-headline-lg font-display text-on-surface tracking-tight uppercase">
+          24/7 Σύνδεση με Κέντρο Λήψης Σημάτων
+        </h2>
+        <p class="text-body-lg text-on-primary-container max-w-3xl leading-relaxed">
+          Συνδέουμε τα συστήματα Hikvision και Ajax με πιστοποιημένα Κέντρα Λήψης Σημάτων για άμεση επέμβαση και 24ωρη προστασία.
+        </p>
+        
+        <!-- Status indicator bullets -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 pt-8 border-t border-on-surface/10">
+          {monitors.map((item) => (
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-on-surface text-[24px]">verified</span>
+              <span class="font-mono-sm text-[13px] uppercase tracking-wider text-on-surface font-black">
+                {item}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

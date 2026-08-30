@@ -1,0 +1,69 @@
+---
+import NumberedSection from "./NumberedSection.astro";
+---
+<NumberedSection 
+  id="smarthome" 
+  number="07" 
+  title="Multi-Room Audio & Architectural Sound" 
+  tags={[{ label: "SONOS PARTNER" }]}
+>
+  <div class="border border-outline-variant bg-surface rounded-md flex flex-col group shadow-sm hover:shadow-md transition-shadow">
+    
+    <!-- Top Info Bar -->
+    <div class="p-5 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest rounded-t-md">
+      <div class="flex gap-2 font-mono-sm text-[11px] uppercase tracking-wider">
+        <span class="bg-primary-container text-on-primary-container px-2 py-1 rounded-sm font-bold">SONOS</span>
+        <span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded-sm">ECOSYSTEM</span>
+      </div>
+      <span class="text-mono-sm text-on-surface-variant font-mono-sm font-bold">AV.SNS</span>
+    </div>
+
+    <!-- Grid Contents -->
+    <div class="grid grid-cols-1 lg:grid-cols-2">
+      
+      <!-- Bullet details -->
+      <div class="p-8 flex flex-col gap-6">
+        <div class="font-mono-sm text-headline-lg-mobile tracking-widest text-on-surface border-b border-outline-variant pb-4 uppercase">
+          ARCHITECTURAL SOUND
+        </div>
+        <h3 class="text-body-lg font-bold text-on-surface uppercase tracking-wider">
+          Sonos Multi-Room Sound & Ηχεία Οροφής
+        </h3>
+        <p class="font-mono-sm text-[12px] text-on-surface-variant leading-relaxed">
+          Ενσωμάτωση αρχιτεκτονικού ήχου σε κατοικίες, γραφεία, εμπορικά καταστήματα και χώρους εστίασης.
+        </p>
+        <ul class="flex flex-col gap-4 mt-2">
+          {[
+            { title: "Sonos Amp & Port", desc: "Ενσωμάτωση εντοιχισμένων ηχείων οροφής Sonance." },
+            { title: "Multi-Zone Audio System", desc: "Διαφορετική μουσική σε κάθε ζώνη μέσω της εφαρμογής Sonos." },
+            { title: "Επαγγελματικός & Οικιακός Ήχος", desc: "Ιδανικό για καφέ, καταστήματα, γραφεία και οικίες." }
+          ].map((bullet) => (
+            <li class="flex items-start gap-3">
+              <span class="text-primary-container font-mono-sm mt-1 text-lg leading-none">▪</span>
+              <div>
+                <span class="font-mono-sm text-[12px] font-bold text-on-surface block uppercase tracking-wider mb-1">
+                  {bullet.title}
+                </span>
+                <span class="font-body-md text-[14px] text-on-surface-variant">
+                  {bullet.desc}
+                </span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Image module -->
+      <div class="h-72 lg:h-auto border-t lg:border-t-0 lg:border-l border-outline-variant relative overflow-hidden min-h-[300px]">
+        <img 
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBn4hrnN5aVbS0LzEQQjLhwS79GIbrX1i2PrOW5tdyB8O01_cdn8hlgLj1fUMs9SNkYyemgP-Ba91TodOsqVOMZ-glwgn_y8EGC0UreM5Qz79xBZSFAbRBoyglZlCEJadsQAqtgJFdCz3uYDuWQgiKMmQxpHq3aAXC7olsIkzfxBwXDgihDKaSbBK7cQ8TGVJQ_TIyeJkL8aq0GCQP-QoGSpkYukcY2O_kMcKVxDx42aEgTanrVc8ksiYi5BsJQ7wHAQ" 
+          alt="Architectural audio in ceiling setup integration" 
+          class="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+          loading="lazy"
+        />
+      </div>
+
+    </div>
+
+  </div>
+</NumberedSection>
