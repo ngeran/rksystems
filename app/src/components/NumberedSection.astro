@@ -17,27 +17,27 @@ const { id, number, title, tags = [], bg = "default" } = Astro.props;
 const backgroundClass = bg === "muted" ? "bg-surface-container-low" : "bg-background";
 ---
 <section id={id} class={`w-full py-20 lg:py-24 relative border-b border-outline-variant ${backgroundClass}`}>
-  <div class="max-w-[1280px] mx-auto px-md md:px-lg flex flex-col lg:flex-row gap-12 lg:gap-16">
-    
-    <!-- Left Number Block -->
-    <div class="w-full lg:w-48 flex-shrink-0">
-      <span class="text-[90px] lg:text-[130px] font-display text-primary-container leading-none tracking-tighter block -mt-6 select-none">
-        {number}
-      </span>
-    </div>
+  <div class="max-w-[1280px] mx-auto px-md md:px-lg">
 
-    <!-- Right Content Block -->
-    <div class="flex-1 min-w-0">
-      <!-- Section Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-outline-variant gap-4">
+    <!-- Header row: number + title/tags share the two-column layout -->
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-16">
+      <!-- Left Number Block -->
+      <div class="w-full lg:w-48 flex-shrink-0">
+        <span class="text-[90px] lg:text-[130px] font-display text-primary-container leading-none tracking-tighter block -mt-6 select-none">
+          {number}
+        </span>
+      </div>
+
+      <!-- Title + tags -->
+      <div class="flex-1 min-w-0 flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-outline-variant gap-4">
         <h2 class="text-headline-lg font-display text-on-surface uppercase tracking-tight">{title}</h2>
-        
+
         {tags.length > 0 && (
           <div class="flex flex-wrap gap-2">
             {tags.map((tag) => (
               <span class={`text-[10px] font-mono-sm uppercase tracking-widest px-3 py-1 rounded-xs font-bold ${
-                tag.variant === "outline" 
-                  ? "text-on-surface-variant border border-outline-variant" 
+                tag.variant === "outline"
+                  ? "text-on-surface-variant border border-outline-variant"
                   : "text-on-surface bg-surface-variant"
               }`}>
                 {tag.label}
@@ -46,8 +46,11 @@ const backgroundClass = bg === "muted" ? "bg-surface-container-low" : "bg-backgr
           </div>
         )}
       </div>
-      
-      <!-- Component Content Slot -->
+    </div>
+
+    <!-- Content row: full container width, flush with the number's left
+         edge, instead of nested inside the number column's sibling. -->
+    <div class="w-full min-w-0">
       <slot />
     </div>
   </div>
