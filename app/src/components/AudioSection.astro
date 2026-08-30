@@ -1,14 +1,14 @@
 ---
 import NumberedSection from "./NumberedSection.astro";
 ---
-<NumberedSection 
-  id="smarthome" 
-  number="07" 
-  title="Multi-Room Audio & Architectural Sound" 
+
+<NumberedSection
+  id="smarthome"
+  number="07"
+  title="Multi-Room Audio & Architectural Sound"
   tags={[{ label: "SONOS PARTNER" }]}
 >
   <div class="border border-outline-variant bg-surface rounded-md flex flex-col group shadow-sm hover:shadow-md transition-shadow">
-    
     <!-- Top Info Bar -->
     <div class="p-5 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest rounded-t-md">
       <div class="flex gap-2 font-mono-sm text-[11px] uppercase tracking-wider">
@@ -20,7 +20,6 @@ import NumberedSection from "./NumberedSection.astro";
 
     <!-- Grid Contents -->
     <div class="grid grid-cols-1 lg:grid-cols-2">
-      
       <!-- Bullet details -->
       <div class="p-8 flex flex-col gap-6">
         <div class="font-mono-sm text-headline-lg-mobile tracking-widest text-on-surface border-b border-outline-variant pb-4 uppercase">
@@ -36,7 +35,7 @@ import NumberedSection from "./NumberedSection.astro";
           {[
             { title: "Sonos Amp & Port", desc: "Ενσωμάτωση εντοιχισμένων ηχείων οροφής Sonance." },
             { title: "Multi-Zone Audio System", desc: "Διαφορετική μουσική σε κάθε ζώνη μέσω της εφαρμογής Sonos." },
-            { title: "Επαγγελματικός & Οικιακός Ήχος", desc: "Ιδανικό για καφέ, καταστήματα, γραφεία και οικίες." }
+            { title: "Επαγγελματικός & Οικιακός Ήχος", desc: "Ιδανικό για καφέ, καταστήματα, γραφεία και οικίες." },
           ].map((bullet) => (
             <li class="flex items-start gap-3">
               <span class="text-primary-container font-mono-sm mt-1 text-lg leading-none">▪</span>
@@ -55,15 +54,13 @@ import NumberedSection from "./NumberedSection.astro";
 
       <!-- Image module -->
       <div class="h-72 lg:h-auto border-t lg:border-t-0 lg:border-l border-outline-variant relative overflow-hidden min-h-[300px]">
-        <img 
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBn4hrnN5aVbS0LzEQQjLhwS79GIbrX1i2PrOW5tdyB8O01_cdn8hlgLj1fUMs9SNkYyemgP-Ba91TodOsqVOMZ-glwgn_y8EGC0UreM5Qz79xBZSFAbRBoyglZlCEJadsQAqtgJFdCz3uYDuWQgiKMmQxpHq3aAXC7olsIkzfxBwXDgihDKaSbBK7cQ8TGVJQ_TIyeJkL8aq0GCQP-QoGSpkYukcY2O_kMcKVxDx42aEgTanrVc8ksiYi5BsJQ7wHAQ" 
-          alt="Architectural audio in ceiling setup integration" 
-          class="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBn4hrnN5aVbS0LzEQQjLhwS79GIbrX1i2PrOW5tdyB8O01_cdn8hlgLj1fUMs9SNkYyemgP-Ba91TodOsqVOMZ-glwgn_y8EGC0UreM5Qz79xBZSFAbRBoyglZlCEJadsQAqtgJFdCz3uYDuWQgiKMmQxpHq3aAXC7olsIkzfxBwXDgihDKaSbBK7cQ8TGVJQ_TIyeJkL8aq0GCQP-QoGSpkYukcY2O_kMcKVxDx42aEgTanrVc8ksiYi5BsJQ7wHAQ"
+          alt="Architectural audio in ceiling setup integration"
+          class="w-full h-full object-cover"
           loading="lazy"
         />
       </div>
-
     </div>
-
   </div>
 </NumberedSection>

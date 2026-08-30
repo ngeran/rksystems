@@ -15,67 +15,89 @@ interface Props {
   kicker: string;
   heading: string;
   bullets: Bullet[];
-  imageSrc: string;
-  imageAlt: string;
+  imageSrc?: string;
+  imageAlt?: string;
 }
 
-const { badges, code, kicker, heading, bullets, imageSrc, imageAlt } = Astro.props;
+const { badges, code, kicker, heading, bullets, imageSrc, imageAlt = "" } = Astro.props;
 ---
-<div class="border border-outline-variant bg-surface rounded-md flex flex-col group shadow-sm hover:shadow-md transition-shadow h-full justify-between">
-  
-  <div>
-    <!-- Top badge bar -->
-    <div class="p-5 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest rounded-t-md">
-      <div class="flex gap-2 font-mono-sm text-[11px] uppercase tracking-wider">
-        {
-          badges.map((badge) => (
-            <span class={`px-2 py-1 rounded-sm ${
-              badge.variant === "neutral" 
-                ? "bg-surface-variant text-on-surface-variant" 
-                : "bg-primary-container text-on-primary-container font-bold"
-            }`}>
-              {badge.label}
-            </span>
-          ))
-        }
-      </div>
-      <span class="text-mono-sm text-on-surface-variant font-mono-sm font-bold">{code}</span>
-    </div>
 
-    <!-- Kicker, Title, Bullet Details -->
-    <div class="p-8 flex flex-col gap-6">
-      <div class="font-mono-sm text-headline-lg-mobile tracking-widest text-on-surface border-b border-outline-variant pb-4 uppercase">
-        {kicker}
-      </div>
-      <h3 class="text-body-lg font-bold text-on-surface uppercase tracking-wider">{heading}</h3>
-      <ul class="flex flex-col gap-4 mt-2">
-        {
-          bullets.map((bullet) => (
-            <li class="flex items-start gap-3">
-              <span class="text-primary-container font-mono-sm mt-1 text-lg leading-none">▪</span>
-              <div>
-                <span class="font-mono-sm text-[12px] font-bold text-on-surface block uppercase tracking-wider mb-1">
-                  {bullet.title}
-                </span>
-                <span class="font-body-md text-[14px] text-on-surface-variant leading-relaxed">
-                  {bullet.desc}
-                </span>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+<div class="slide-in-card border border-outline-variant bg-surface rounded-md overflow-hidden flex flex-col group shadow-sm hover:shadow-md transition-shadow">
+  <!-- Image on top. Use the "image" slot to pass an optimized astro:assets
+       <Image /> for local files; falls back to a plain <img> if imageSrc is
+       provided instead. -->
+  <div class="h-56 md:h-64 relative overflow-hidden bg-surface-container-lowest">
+    <slot name="image">
+      {imageSrc && <img src={imageSrc} alt={imageAlt} loading="lazy" class="w-full h-full object-cover" />}
+    </slot>
   </div>
 
-  <!-- Unclipped Bottom Image -->
-  <div class="h-56 border-t border-outline-variant relative overflow-hidden rounded-b-md min-h-[220px]">
-    <img 
-      src={imageSrc} 
-      alt={imageAlt} 
-      class="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-      loading="lazy"
-    />
+  <div class="p-5 border-t border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+    <div class="flex gap-2 font-mono-sm text-[11px] uppercase tracking-wider">
+      {
+        badges.map((badge) => (
+          <span
+            class:list={[
+              "px-2 py-1 rounded-sm",
+              badge.variant === "neutral"
+                ? "bg-surface-variant text-on-surface-variant"
+                : "bg-primary-container text-on-primary-container font-bold",
+            ]}
+          >
+            {badge.label}
+          </span>
+        ))
+      }
+    </div>
+    <span class="text-mono-sm text-on-surface-variant">{code}</span>
   </div>
 
+  <div class="p-8 flex flex-col gap-6 flex-1">
+    <div class="font-mono-sm text-headline-lg-mobile tracking-widest text-on-surface border-b border-outline-variant pb-4 uppercase">
+      {kicker}
+    </div>
+    <h3 class="text-body-lg font-bold text-on-surface uppercase tracking-wider">{heading}</h3>
+    <ul class="flex flex-col gap-4 mt-2">
+      {
+        bullets.map((bullet) => (
+          <li class="flex items-start gap-3">
+            <span class="text-primary-container font-mono-sm mt-1 text-lg leading-none">▪</span>
+            <div>
+              <span class="font-mono-sm text-[12px] font-bold text-on-surface block uppercase tracking-wider mb-1">
+                {bullet.title}
+              </span>
+              <span class="font-body-md text-[14px] text-on-surface-variant leading-relaxed">{bullet.desc}</span>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </div>
+
+<script>
+  // Lightweight scroll-reveal for every .slide-in-card on the page (CCTV,
+  // Alarms, Networks, Audio all use this component). Astro dedupes this
+  // script by content across every instance, so it only ever runs once per
+  // page regardless of how many cards render. No GSAP dependency needed.
+  const cards = document.querySelectorAll<HTMLElement>(".slide-in-card:not([data-observed])");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const target = entry.target as HTMLElement;
+        const delay = Number(target.dataset.revealDelay ?? 0);
+        window.setTimeout(() => target.classList.add("active"), delay);
+        observer.unobserve(target);
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+  );
+
+  cards.forEach((card, i) => {
+    card.dataset.observed = "true";
+    card.dataset.revealDelay = String((i % 4) * 90);
+    observer.observe(card);
+  });
+</script>

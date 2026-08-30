@@ -2,12 +2,9 @@
 import { Image } from 'astro:assets';
 import heroImage from '../assets/hero.jpg';
 ---
-
 <section class="relative w-full min-h-[500px] lg:min-h-0 flex items-center bg-background overflow-hidden border-b border-outline-variant py-6 lg:py-8">
-  
   <div class="w-full max-w-[1280px] mx-auto px-md md:px-lg relative z-20">
     <div class="grid lg:grid-cols-12 gap-4 items-center">
-      
       <!-- LEFT SIDE: Content -->
       <div class="lg:col-span-7 flex flex-col items-start text-left">
         <div class="flex items-center gap-4 mb-3">
@@ -17,55 +14,45 @@ import heroImage from '../assets/hero.jpg';
             <p class="font-mono-sm text-[9px] uppercase tracking-[0.15em] text-primary font-bold mt-1">ΕΞΕΙΔΙΚΕΥΣΗ & ΤΕΧΝΙΚΗ ΑΞΙΟΠΙΣΤΙΑ</p>
           </div>
         </div>
-
         <h1 class="text-display font-display text-on-surface mb-4 tracking-tighter leading-[1.05] font-black uppercase text-balance">
           Συστήματα <br /> Ασφαλείας &amp; <br />
           <span class="bg-primary-container text-on-primary-container px-3 pb-1 mt-1 inline-block">Εταιρικά Δίκτυα</span>
         </h1>
-
         <div class="border-l-2 border-outline/35 pl-6 mb-5 max-w-[550px]">
           <p class="text-body-md lg:text-body-lg text-on-surface-variant leading-relaxed">
             Μελέτη και εγκατάσταση καμερών Hikvision ColorVu &amp; AcuSense, ασύρματων συναγερμών AX PRO / Ajax, δομημένης καλωδίωσης UniFi / MikroTik και δορυφορικού Internet Starlink.
           </p>
         </div>
-
         <div class="flex flex-wrap gap-4 w-full sm:w-auto">
           <a href="#quote" class="w-full sm:w-auto bg-on-background text-surface-container-lowest font-mono-sm text-[11px] font-bold tracking-widest uppercase px-7 py-3.5 hover:bg-primary hover:text-on-primary transition-all rounded-xs text-center shadow-lg">Δωρεάν Μελέτη Χώρου</a>
           <a href="#about" class="w-full sm:w-auto bg-surface-container-lowest/80 border border-outline-variant text-on-surface font-mono-sm text-[11px] font-bold tracking-widest uppercase px-7 py-3.5 hover:bg-surface rounded-xs text-center transition-all">Η Εμπειρία μας</a>
         </div>
-
         <div class="mt-8 flex flex-wrap gap-2">
           {["CCTV", "ALARMS", "INTERCOMS", "NETWORKS", "STARLINK", "SMART AUDIO"].map((tag) => (
             <span class="bg-surface-container-low text-on-surface-variant border border-outline-variant text-[9px] font-mono-sm font-bold px-2.5 py-1 rounded-sm uppercase tracking-wider">{tag}</span>
           ))}
         </div>
       </div>
-
       <!-- RIGHT SIDE: Image with 4-way fade -->
       <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
         <div class="relative w-full max-w-[400px] lg:max-w-none">
-            
+            <!-- 4-way fade: mix-blend-multiply removes the image's white
+                 background; two mask-image gradients (composited via
+                 intersect) fade top/bottom and left/right independently so
+                 only the center is fully visible. Full-colour, no hover
+                 zoom — the grayscale/contrast filter and hover-scale from
+                 the previous version are removed. -->
             <Image
                 src={heroImage}
                 alt="RK Security and Network Technical Equipment"
                 loading="eager"
                 fetchpriority="high"
-                /* 
-                   THE 4-WAY FADE LOGIC:
-                   1. mix-blend-multiply: Removes image white background.
-                   2. [mask-image]: We use two linear gradients. 
-                      - One fades Top and Bottom.
-                      - One fades Left and Right.
-                   3. [mask-composite:intersect]: Merges them so only the center is visible.
-                */
-                class="w-full h-auto max-h-[350px] lg:max-h-[450px] object-contain grayscale-[0.2] contrast-[1.1] brightness-100 mix-blend-multiply 
-                [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent),linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] 
+                class="w-full h-auto max-h-[350px] lg:max-h-[450px] object-contain mix-blend-multiply
+                [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent),linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]
                 [mask-composite:intersect]"
             />
-
         </div>
       </div>
-
     </div>
   </div>
 </section>
