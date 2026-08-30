@@ -1,6 +1,11 @@
 ---
 import NumberedSection from "./NumberedSection.astro";
 import FeatureCard from "./FeatureCard.astro";
+
+// 1. Import local images from assets
+import unifiImg from "../assets/unifi.jpg";
+import omadaImg from "../assets/omada.jpg";
+import mikrotikImg from "../assets/mikrotik.jpg";
 ---
 
 <NumberedSection
@@ -20,9 +25,11 @@ import FeatureCard from "./FeatureCard.astro";
         { title: "Seamless Roaming", desc: "Σταθερή κάλυψη Wi-Fi παντού χωρίς αποσυνδέσεις." },
         { title: "VLAN Segmentation", desc: "Πλήρης διαχωρισμός δικτύου CCTV, Guest & Office." },
       ]}
-      imageSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuDAyx8xfyDRRcYAGCL6R1-BuqGnG4_4CM_GS7o74p_KI4NoofvC7w3KWa3HIhVSAv16pcSqqB1uSBqPFm8S0OWnJZEaQCwBuDqBjCcIrgpvn6WyYqDZLnuOuRq344_cX8j0MTPwncZ32b6rJZSx19rvyaVNBchnddLe3tB6XYGfGpTU4NX7gyzkCzbdCuD0B0zQUYTZJKUabfSN4V0zwD76AOmpXNhW4VhTrNaNhMyBq6NGOqlfAKUMq5mQYlzUEqV-wg"
+      /* 2. Pass the imported image object */
+      imageSrc={unifiImg}
       imageAlt="Ubiquiti UniFi network hardware stack"
     />
+    
     <FeatureCard
       badges={[{ label: "TP-LINK" }, { label: "OMADA", variant: "neutral" }]}
       code="NW.TPL"
@@ -33,9 +40,11 @@ import FeatureCard from "./FeatureCard.astro";
         { title: "Managed PoE Switches", desc: "Σταθερή τροφοδοσία καμερών CCTV και συσκευών." },
         { title: "Captive Portal", desc: "Wi-Fi vouchers και guest isolation για καταστήματα." },
       ]}
-      imageSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuB1AjlwlgFX6GT1FPap7i3njp0CM_3Wntuq3rKXvQRbPneRZxEaZ2R6h7cT5Hb6RsNmsUXbLgDnEjnHfqlIa-RioT-55QAXiX25c6kRS5-ruzwtOsALea0A7UGYfBLEyN20etJaawjC_HWkkGxcIog9yMsJ3nGqgqCSCD--9YTsp0e9yjj-LxIRzXNHaDv67xYoPbAjmvPmdNqKqmY6pq82RHJWpIeHkQkOSnWAGjKQqPi5Tfbu_hPrDcZkYTZpOf-8zw"
+      /* 2. Pass the imported image object */
+      imageSrc={omadaImg}
       imageAlt="TP Link Omada network equipment range"
     />
+    
     <FeatureCard
       badges={[{ label: "MIKROTIK" }, { label: "ROUTING", variant: "neutral" }]}
       code="NW.MKT"
@@ -46,7 +55,8 @@ import FeatureCard from "./FeatureCard.astro";
         { title: "WireGuard & IPsec VPN", desc: "Ασφαλής σύνδεση απομακρυσμένων σημείων." },
         { title: "Advanced QoS Profiles", desc: "Απόλυτη προτεραιότητα ταχύτητας σε CCTV και POS." },
       ]}
-      imageSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuAgE3_2akAyhUIgQwNZxW6jSKEuRnkxwceqf_9Svzqi8fIG1cuWahZjxf3El8zsE4vqd4HTYUE8lzBUmvv4RI3bWdD_teMazgFvJtFmXVCL6TJIv03EwT0oQeUgfIFvNvVkUtyBgylPC9OLU7k79XqkzOGQ57kTWVEO_A5MEdxx47ogxHCnXvdhrnD56RUg0c9sKKKwITJcXAzm0AO40RrsFf8T7jdbVF2qcEC26f5IWsd4j7tvXgnsErVNe-FVRlRzqQ"
+      /* 2. Pass the imported image object */
+      imageSrc={mikrotikImg}
       imageAlt="MikroTik routers setup view"
     />
   </div>

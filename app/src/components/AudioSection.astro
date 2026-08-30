@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import NumberedSection from "./NumberedSection.astro";
+import sonosLogo from "../assets/Sonos-Logo.wine.svg";
 ---
 
 <NumberedSection
@@ -53,11 +55,11 @@ import NumberedSection from "./NumberedSection.astro";
       </div>
 
       <!-- Image module -->
-      <div class="h-72 lg:h-auto border-t lg:border-t-0 lg:border-l border-outline-variant relative overflow-hidden min-h-[300px]">
-        <img
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBn4hrnN5aVbS0LzEQQjLhwS79GIbrX1i2PrOW5tdyB8O01_cdn8hlgLj1fUMs9SNkYyemgP-Ba91TodOsqVOMZ-glwgn_y8EGC0UreM5Qz79xBZSFAbRBoyglZlCEJadsQAqtgJFdCz3uYDuWQgiKMmQxpHq3aAXC7olsIkzfxBwXDgihDKaSbBK7cQ8TGVJQ_TIyeJkL8aq0GCQP-QoGSpkYukcY2O_kMcKVxDx42aEgTanrVc8ksiYi5BsJQ7wHAQ"
-          alt="Architectural audio in ceiling setup integration"
-          class="w-full h-full object-cover"
+      <div class="h-72 lg:h-auto border-t lg:border-t-0 lg:border-l border-outline-variant relative overflow-hidden min-h-[300px] flex items-center justify-center bg-surface-container-lowest/50">
+        <Image
+          src={sonosLogo}
+          alt="Sonos Architectural Audio Logo"
+          class="w-full h-full max-w-[280px] object-contain p-12 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
           loading="lazy"
         />
       </div>
