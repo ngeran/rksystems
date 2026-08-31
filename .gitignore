@@ -1,7 +1,20 @@
+# Nix/build outputs
 result
 result-*
-.direnv/
-node_modules/
-dist/
 site-out
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
 app/.astro/
+
+# AI-related and generated files
+CLAUDE.md
+.claude/
+.cursor/
+.cursorrules
+.github/copilot-instructions.md
+*~
+*.log

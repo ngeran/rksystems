@@ -30,12 +30,12 @@ const backgroundClass = bg === "muted" ? "bg-surface-container-low" : "bg-backgr
 
       <!-- Title + tags -->
       <div class="flex-1 min-w-0 flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-outline-variant gap-4">
-        <h2 class="text-headline-lg font-display text-on-surface uppercase tracking-tight">{title}</h2>
+        <h2 class="text-headline-lg font-display text-on-surface tracking-tight">{title}</h2>
 
         {tags.length > 0 && (
           <div class="flex flex-wrap gap-2">
             {tags.map((tag) => (
-              <span class={`text-[10px] font-mono-sm uppercase tracking-widest px-3 py-1 rounded-xs font-bold ${
+              <span class={`text-[10px] font-mono-sm tracking-widest px-3 py-1 rounded-xs font-bold ${
                 tag.variant === "outline"
                   ? "text-on-surface-variant border border-outline-variant"
                   : "text-on-surface bg-surface-variant"

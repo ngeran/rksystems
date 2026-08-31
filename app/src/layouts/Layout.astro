@@ -44,14 +44,14 @@ const menuLinks = [
           </div>
           <div class="flex flex-col">
             <span class="font-mono-sm text-mono-sm font-bold text-on-surface tracking-wider leading-none">RK.SYSTEMS</span>
-            <span class="text-[9px] uppercase tracking-widest text-on-surface-variant font-bold">Security & Network</span>
+            <span class="text-[9px] tracking-widest text-on-surface-variant font-bold">Security & Network</span>
           </div>
         </a>
 
         <!-- Navigation Links -->
         <nav class="hidden lg:flex items-center gap-1">
           {menuLinks.map((link) => (
-            <a href={link.href} class="px-3 py-2 text-mono-sm font-mono-sm font-bold uppercase tracking-wider text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-sm transition-all duration-200">
+            <a href={link.href} class="px-3 py-2 text-mono-sm font-mono-sm font-bold tracking-wider text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-sm transition-all duration-200">
               {link.text}
             </a>
           ))}
@@ -59,7 +59,7 @@ const menuLinks = [
 
         <!-- CTA & Mobile Toggle -->
         <div class="flex items-center gap-4">
-          <a href="#quote" class="hidden sm:inline-flex bg-on-background text-surface-container-lowest font-mono-sm text-[11px] font-bold uppercase tracking-widest py-2.5 px-5 hover:bg-primary-container hover:text-on-primary-container transition-all rounded-xs">
+          <a href="#quote" class="hidden sm:inline-flex bg-on-background text-surface-container-lowest font-mono-sm text-[11px] font-bold tracking-widest py-2.5 px-5 hover:bg-primary-container hover:text-on-primary-container transition-all rounded-xs">
             Αίτηση Αυτοψίας
           </a>
           
@@ -78,7 +78,7 @@ const menuLinks = [
             {link.text}
           </a>
         ))}
-        <a href="#quote" class="mobile-link mt-6 w-full text-center bg-primary-container text-on-primary-container font-mono-sm font-bold py-4 rounded-xs uppercase tracking-widest">
+        <a href="#quote" class="mobile-link mt-6 w-full text-center bg-primary-container text-on-primary-container font-mono-sm font-bold py-4 rounded-xs tracking-widest">
           Αίτηση Αυτοψίας
         </a>
       </div>
