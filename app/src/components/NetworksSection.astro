@@ -2,7 +2,7 @@
 import NumberedSection from "./NumberedSection.astro";
 import FeatureCard from "./FeatureCard.astro";
 
-// 1. Import local images from assets
+// 1. IMPORT LOCAL ASSETS
 import unifiImg from "../assets/unifi.jpg";
 import omadaImg from "../assets/omada.jpg";
 import mikrotikImg from "../assets/mikrotik.jpg";
@@ -25,7 +25,6 @@ import mikrotikImg from "../assets/mikrotik.jpg";
         { title: "Seamless Roaming", desc: "Σταθερή κάλυψη Wi-Fi παντού χωρίς αποσυνδέσεις." },
         { title: "VLAN Segmentation", desc: "Πλήρης διαχωρισμός δικτύου CCTV, Guest & Office." },
       ]}
-      /* 2. Pass the imported image object */
       imageSrc={unifiImg}
       imageAlt="Ubiquiti UniFi network hardware stack"
     />
@@ -40,7 +39,6 @@ import mikrotikImg from "../assets/mikrotik.jpg";
         { title: "Managed PoE Switches", desc: "Σταθερή τροφοδοσία καμερών CCTV και συσκευών." },
         { title: "Captive Portal", desc: "Wi-Fi vouchers και guest isolation για καταστήματα." },
       ]}
-      /* 2. Pass the imported image object */
       imageSrc={omadaImg}
       imageAlt="TP Link Omada network equipment range"
     />
@@ -55,7 +53,6 @@ import mikrotikImg from "../assets/mikrotik.jpg";
         { title: "WireGuard & IPsec VPN", desc: "Ασφαλής σύνδεση απομακρυσμένων σημείων." },
         { title: "Advanced QoS Profiles", desc: "Απόλυτη προτεραιότητα ταχύτητας σε CCTV και POS." },
       ]}
-      /* 2. Pass the imported image object */
       imageSrc={mikrotikImg}
       imageAlt="MikroTik routers setup view"
     />

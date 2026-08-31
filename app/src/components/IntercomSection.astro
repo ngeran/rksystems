@@ -1,6 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import NumberedSection from "./NumberedSection.astro";
+import intercomImg from "../assets/hikvision-intercom.jpg";
 ---
+
 <NumberedSection 
   id="intercom" 
   number="04" 
@@ -11,7 +14,7 @@ import NumberedSection from "./NumberedSection.astro";
     
     <!-- Top info bar -->
     <div class="p-5 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest rounded-t-md">
-      <div class="flex gap-2 font-mono-sm text-[11px] uppercase tracking-wider">
+      <div class="flex gap-2 font-mono-sm text-[11px] tracking-wider">
         <span class="bg-primary-container text-on-primary-container px-2 py-1 rounded-sm font-bold">HIKVISION</span>
         <span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded-sm">IP INTERCOM</span>
       </div>
@@ -23,10 +26,10 @@ import NumberedSection from "./NumberedSection.astro";
       
       <!-- Text details -->
       <div class="p-8 flex flex-col gap-6">
-        <div class="font-mono-sm text-headline-lg-mobile tracking-widest text-on-surface border-b border-outline-variant pb-4 uppercase">
-          ENTRY CONTROL SYSTEMS
+        <div class="font-mono-sm text-headline-lg-mobile tracking-widest text-on-surface border-b border-outline-variant pb-4">
+          Entry Control Systems
         </div>
-        <h3 class="text-body-lg font-bold text-on-surface uppercase tracking-wider">
+        <h3 class="text-body-lg font-bold text-on-surface tracking-wider">
           Έλεγχος Εισόδου & Απομακρυσμένο Άνοιγμα Πόρτας
         </h3>
         <p class="font-mono-sm text-[12px] text-on-surface-variant leading-relaxed">
@@ -42,7 +45,7 @@ import NumberedSection from "./NumberedSection.astro";
             <li class="flex items-start gap-3">
               <span class="text-primary-container font-mono-sm mt-1 text-lg leading-none">▪</span>
               <div>
-                <span class="font-mono-sm text-[12px] font-bold text-on-surface block uppercase tracking-wider mb-1">
+                <span class="font-mono-sm text-[12px] font-bold text-on-surface block tracking-wider mb-1">
                   {bullet.title}
                 </span>
                 <span class="font-body-md text-[14px] text-on-surface-variant">
@@ -56,8 +59,8 @@ import NumberedSection from "./NumberedSection.astro";
 
       <!-- Image Area -->
       <div class="h-72 lg:h-auto border-t lg:border-t-0 lg:border-l border-outline-variant relative overflow-hidden min-h-[300px]">
-        <img 
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAyx8xfyDRRcYAGCL6R1-BuqGnG4_4CM_GS7o74p_KI4NoofvC7w3KWa3HIhVSAv16pcSqqB1uSBqPFm8S0OWnJZEaQCwBuDqBjCcIrgpvn6WyYqDZLnuOuRq344_cX8j0MTPwncZ32b6rJZSx19rvyaVNBchnddLe3tB6XYGfGpTU4NX7gyzkCzbdCuD0B0zQUYTZJKUabfSN4V0zwD76AOmpXNhW4VhTrNaNhMyBq6NGOqlfAKUMq5mQYlzUEqV-wg" 
+        <Image 
+          src={intercomImg} 
           alt="Hikvision Video Intercom module station" 
           class="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
           loading="lazy"
