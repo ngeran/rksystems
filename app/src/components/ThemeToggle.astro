@@ -1,0 +1,71 @@
+---
+/**
+ * Dark/light theme toggle.
+ * - Dark is the default theme (controlled via Layout.astro).
+ * - Uses a single span ligature for Material Symbols to prevent "double icon" glitches.
+ */
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="Εναλλαγή σκούρου / φωτεινού θέματος"
+  class="inline-flex items-center gap-1.5 bg-surface-variant/20 border border-outline-variant text-on-surface-variant hover:text-primary hover:border-primary transition-colors px-3 py-1 rounded-sm font-mono-sm text-[11px] font-bold tracking-wide"
+>
+  <!-- Single span for the icon: text content changes between 'dark_mode' and 'light_mode' -->
+  <span class="material-symbols-outlined text-[14px] leading-none" data-icon>
+    dark_mode
+  </span>
+  <span data-label>DARK</span>
+</button>
+
+<script>
+  const STORAGE_KEY = "theme";
+  const root = document.documentElement;
+
+  /**
+   * Updates all theme toggle buttons on the page to match the current theme.
+   */
+  function updateToggleUI(theme: "dark" | "light") {
+    const buttons = document.querySelectorAll("#theme-toggle");
+    
+    buttons.forEach((btn) => {
+      const label = btn.querySelector("[data-label]");
+      const icon = btn.querySelector("[data-icon]");
+
+      if (label) {
+        label.textContent = theme === "dark" ? "DARK" : "LIGHT";
+      }
+      
+      if (icon) {
+        // We change the text inside the span. 
+        // Material Symbols font converts these strings into the correct icon.
+        icon.textContent = theme === "dark" ? "dark_mode" : "light_mode";
+      }
+    });
+  }
+
+  function applyTheme(theme: "dark" | "light") {
+    // 1. Update the <html> class
+    root.classList.toggle("dark", theme === "dark");
+    // 2. Update the Button UI
+    updateToggleUI(theme);
+  }
+
+  function currentTheme(): "dark" | "light" {
+    return root.classList.contains("dark") ? "dark" : "light";
+  }
+
+  // Initial Sync: 
+  // Ensures the button matches the theme applied by the blocking script in Layout.astro
+  applyTheme(currentTheme());
+
+  // Handle Clicks
+  document.querySelectorAll("#theme-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const next = currentTheme() === "dark" ? "light" : "dark";
+      localStorage.setItem(STORAGE_KEY, next);
+      applyTheme(next);
+    });
+  });
+</script>

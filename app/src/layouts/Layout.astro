@@ -1,14 +1,12 @@
 ---
 import TopBar from "../components/TopBar.astro";
 import Footer from "../components/Footer.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 import "../styles/global.css";
-
 interface Props {
   title?: string;
 }
-
 const { title = "RK - Security & Network Solutions" } = Astro.props;
-
 const menuLinks = [
   { href: "#about", text: "Σχετικά" },
   { href: "#cctv", text: "CCTV" },
@@ -19,13 +17,19 @@ const menuLinks = [
   { href: "#smarthome", text: "Ήχος" },
 ];
 ---
-
 <!doctype html>
-<html lang="el">
+<html lang="el" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <script is:inline>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var theme = stored === "light" ? "light" : "dark"; // dark wins by default
+        document.documentElement.classList.toggle("dark", theme === "dark");
+      })();
+    </script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,7 +37,6 @@ const menuLinks = [
   </head>
   <body class="bg-background text-on-surface flex flex-col min-h-screen">
     <TopBar />
-    
     <!-- Sticky Header -->
     <header class="sticky top-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant h-16 flex items-center transition-all duration-300">
       <div class="w-full max-w-[1280px] mx-auto px-md md:px-lg flex items-center justify-between">
@@ -47,7 +50,6 @@ const menuLinks = [
             <span class="text-[9px] tracking-widest text-on-surface-variant font-bold">Security & Network</span>
           </div>
         </a>
-
         <!-- Navigation Links -->
         <nav class="hidden lg:flex items-center gap-1">
           {menuLinks.map((link) => (
@@ -56,20 +58,18 @@ const menuLinks = [
             </a>
           ))}
         </nav>
-
         <!-- CTA & Mobile Toggle -->
         <div class="flex items-center gap-4">
+          <ThemeToggle />
           <a href="#quote" class="hidden sm:inline-flex bg-on-background text-surface-container-lowest font-mono-sm text-[11px] font-bold tracking-widest py-2.5 px-5 hover:bg-primary-container hover:text-on-primary-container transition-all rounded-xs">
             Αίτηση Αυτοψίας
           </a>
-          
           <button id="menu-toggle" class="lg:hidden p-2 text-on-surface" aria-label="Toggle Navigation Menu">
             <span class="material-symbols-outlined text-[24px]">menu</span>
           </button>
         </div>
       </div>
     </header>
-
     <!-- Mobile Menu dropdown -->
     <div id="mobile-menu" class="hidden fixed inset-0 top-16 bg-surface/98 backdrop-blur-xl z-40 lg:hidden flex flex-col p-6 border-b border-outline-variant transition-all">
       <div class="flex flex-col gap-4 mt-4">
@@ -83,18 +83,14 @@ const menuLinks = [
         </a>
       </div>
     </div>
-
     <main class="flex-grow">
       <slot />
     </main>
-
     <Footer />
-
     <script>
       const toggle = document.getElementById('menu-toggle');
       const menu = document.getElementById('mobile-menu');
       const links = document.querySelectorAll('.mobile-link');
-
       toggle?.addEventListener('click', () => {
         const icon = toggle.querySelector('.material-symbols-outlined');
         if (menu?.classList.contains('hidden')) {
@@ -105,7 +101,6 @@ const menuLinks = [
           if (icon) icon.textContent = 'menu';
         }
       });
-
       links.forEach(link => {
         link.addEventListener('click', () => {
           menu?.classList.add('hidden');
