@@ -1,12 +1,18 @@
 ---
-import TopBar from "../components/TopBar.astro";
+// TO REACTIVATE TOPBAR: 
+// 1. Uncomment the import line below (remove the //)
+// import TopBar from "../components/TopBar.astro";
+
 import Footer from "../components/Footer.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import "../styles/global.css";
+
 interface Props {
   title?: string;
 }
+
 const { title = "RK - Security & Network Solutions" } = Astro.props;
+
 const menuLinks = [
   { href: "#about", text: "Σχετικά" },
   { href: "#cctv", text: "CCTV" },
@@ -36,7 +42,14 @@ const menuLinks = [
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
   </head>
   <body class="bg-background text-on-surface flex flex-col min-h-screen">
-    <TopBar />
+    
+    {/* 
+      TO REACTIVATE TOPBAR: 
+      1. Uncomment the line below (remove the { /* and * / } )
+      2. Remember to also uncomment the import at the very top of this file.
+    */}
+    {/* <TopBar /> */}
+
     <!-- Sticky Header -->
     <header class="sticky top-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant h-16 flex items-center transition-all duration-300">
       <div class="w-full max-w-[1280px] mx-auto px-md md:px-lg flex items-center justify-between">
@@ -50,6 +63,7 @@ const menuLinks = [
             <span class="text-[9px] tracking-widest text-on-surface-variant font-bold">Security & Network</span>
           </div>
         </a>
+
         <!-- Navigation Links -->
         <nav class="hidden lg:flex items-center gap-1">
           {menuLinks.map((link) => (
@@ -58,6 +72,7 @@ const menuLinks = [
             </a>
           ))}
         </nav>
+
         <!-- CTA & Mobile Toggle -->
         <div class="flex items-center gap-4">
           <ThemeToggle />
@@ -70,6 +85,7 @@ const menuLinks = [
         </div>
       </div>
     </header>
+
     <!-- Mobile Menu dropdown -->
     <div id="mobile-menu" class="hidden fixed inset-0 top-16 bg-surface/98 backdrop-blur-xl z-40 lg:hidden flex flex-col p-6 border-b border-outline-variant transition-all">
       <div class="flex flex-col gap-4 mt-4">
@@ -83,14 +99,18 @@ const menuLinks = [
         </a>
       </div>
     </div>
+
     <main class="flex-grow">
       <slot />
     </main>
+
     <Footer />
+
     <script>
       const toggle = document.getElementById('menu-toggle');
       const menu = document.getElementById('mobile-menu');
       const links = document.querySelectorAll('.mobile-link');
+
       toggle?.addEventListener('click', () => {
         const icon = toggle.querySelector('.material-symbols-outlined');
         if (menu?.classList.contains('hidden')) {
@@ -101,6 +121,7 @@ const menuLinks = [
           if (icon) icon.textContent = 'menu';
         }
       });
+
       links.forEach(link => {
         link.addEventListener('click', () => {
           menu?.classList.add('hidden');
