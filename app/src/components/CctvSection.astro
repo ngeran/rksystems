@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import NumberedSection from "./NumberedSection.astro";
 import FeatureCard from "./FeatureCard.astro";
 
@@ -7,81 +6,55 @@ import FeatureCard from "./FeatureCard.astro";
 import colorvuImg from "../assets/colorvue.webp";
 import nvrImg from "../assets/acuseek.webp";
 import dahuaImg from "../assets/dahua.webp";
-
-const cctvCards = [
-  {
-    badges: [{ label: "HIKVISION PRIMARY" }, { label: "CCTV AI", variant: "neutral" as const }],
-    code: "SEC.HK1",
-    kicker: "COLORVU 3.0 & ACUSENSE AI",
-    heading: "ColorVu 3.0 & AcuSense AI Dome Cameras",
-    bullets: [
-      { title: "ColorVu 3.0", desc: "Έγχρωμη εικόνα 24/7 σε απόλυτο σκοτάδι με διάφραγμα F1.0." },
-      { title: "AcuSense AI", desc: "Αναγνώριση ανθρώπων και οχημάτων με ακρίβεια 99%." },
-      { title: "Audio 2.0", desc: "Αμφίδρομος ήχος & κορυφαία προστασία από διάβρωση." },
-    ],
-    image: colorvuImg,
-    alt: "Hikvision ColorVu camera asset",
-  },
-  {
-    badges: [{ label: "AI AGENT CLOUD" }, { label: "CCTV AI", variant: "neutral" as const }],
-    code: "SEC.HK2",
-    kicker: "ACUSEEK NVR & AI AGENT",
-    heading: "Hikvision AcuSeek NVR & AI Search",
-    bullets: [
-      { title: "Natural Language Search", desc: "Εύρεση συμβάντων με απλή περιγραφή κειμένου." },
-      { title: "Elasticsearch Engine", desc: "Άμεση ανεύρεση οχήματος/στόχου σε δευτερόλεπτα." },
-      { title: "Hik-Connect App", desc: "Ζωντανή εικόνα και άμεσες ειδοποιήσεις στο κινητό σας." },
-    ],
-    image: nvrImg,
-    alt: "Hikvision AcuSeek NVR hardware",
-  },
-  {
-    badges: [{ label: "DAHUA PRO ACTIVE" }, { label: "CCTV AI", variant: "neutral" as const }],
-    code: "SEC.DH1",
-    kicker: "DAHUA TIOC 4K SYSTEM",
-    heading: "Dahua TiOC 4K Active Deterrence",
-    bullets: [
-      { title: "Full-Colour 4K", desc: "Υψηλή ανάλυση ημέρα & νύχτα." },
-      { title: "Ενεργή Αποτροπή", desc: "Κόκκινο/Μπλε Flash Strobe και σειρήνα 110dB." },
-      { title: "Smart Dual Light", desc: "Αυτόματη εναλλαγή IR και θερμού LED φωτός." },
-    ],
-    image: dahuaImg,
-    alt: "Dahua Active Deterrence Camera product view",
-  },
-];
 ---
 
 <NumberedSection
   id="cctv"
-  number="02"
+  icon="videocam"
   title="Κάμερες CCTV & AI Ανάλυση"
   tags={[{ label: "HIKVISION FOCUS" }, { label: "DAHUA SOLUTIONS", variant: "outline" }]}
 >
-  <!-- MATCHED GRID: 1 col on mobile, 2 on tablet, 3 on desktop -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {
-      cctvCards.map((card) => (
-        <FeatureCard 
-          badges={card.badges} 
-          code={card.code} 
-          kicker={card.kicker} 
-          heading={card.heading} 
-          bullets={card.bullets}
-        >
-          <!-- MATCHED IMAGE SLOT: Using aspect-video and object-cover -->
-          <div slot="image" class="relative w-full aspect-video overflow-hidden border-b border-outline-variant bg-surface-container-low">
-            <Image
-              src={card.image}
-              alt={card.alt}
-              width={800}
-              height={450}
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </FeatureCard>
-      ))
-    }
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <FeatureCard
+      badges={[{ label: "HIKVISION PRIMARY" }, { label: "CCTV AI", variant: "neutral" }]}
+      code="SEC.HK1"
+      kicker="COLORVU 3.0 & ACUSENSE AI"
+      heading="ColorVu 3.0 & AcuSense AI Dome Cameras"
+      bullets={[
+        { title: "ColorVu 3.0", desc: "Έγχρωμη εικόνα 24/7 σε απόλυτο σκοτάδι με διάφραγμα F1.0." },
+        { title: "AcuSense AI", desc: "Αναγνώριση ανθρώπων και οχημάτων με ακρίβεια 99%." },
+        { title: "Audio 2.0", desc: "Αμφίδρομος ήχος & κορυφαία προστασία από διάβρωση." },
+      ]}
+      imageSrc={colorvuImg}
+      imageAlt="Hikvision ColorVu camera asset"
+    />
+
+    <FeatureCard
+      badges={[{ label: "AI AGENT CLOUD" }, { label: "CCTV AI", variant: "neutral" }]}
+      code="SEC.HK2"
+      kicker="ACUSEEK NVR & AI AGENT"
+      heading="Hikvision AcuSeek NVR & AI Search"
+      bullets={[
+        { title: "Natural Language Search", desc: "Εύρεση συμβάντων με απλή περιγραφή κειμένου." },
+        { title: "Elasticsearch Engine", desc: "Άμεση ανεύρεση οχήματος/στόχου σε δευτερόλεπτα." },
+        { title: "Hik-Connect App", desc: "Ζωντανή εικόνα και άμεσες ειδοποιήσεις στο κινητό σας." },
+      ]}
+      imageSrc={nvrImg}
+      imageAlt="Hikvision AcuSeek NVR hardware"
+    />
+
+    <FeatureCard
+      badges={[{ label: "DAHUA PRO ACTIVE" }, { label: "CCTV AI", variant: "neutral" }]}
+      code="SEC.DH1"
+      kicker="DAHUA TIOC 4K SYSTEM"
+      heading="Dahua TiOC 4K Active Deterrence"
+      bullets={[
+        { title: "Full-Colour 4K", desc: "Υψηλή ανάλυση ημέρα & νύχτα." },
+        { title: "Ενεργή Αποτροπή", desc: "Κόκκινο/Μπλε Flash Strobe και σειρήνα 110dB." },
+        { title: "Smart Dual Light", desc: "Αυτόματη εναλλαγή IR και θερμού LED φωτός." },
+      ]}
+      imageSrc={dahuaImg}
+      imageAlt="Dahua Active Deterrence Camera product view"
+    />
   </div>
 </NumberedSection>
