@@ -1,17 +1,19 @@
 ---
+// Define the services list for the dropdown
 const servicesList = [
-  { value: "cctv", label: "Κάμερες CCTV (Hikvision ColorVu / AcuSense / Dahua)" },
-  { value: "alarm", label: "Σύστημα Συναγερμού (Hikvision AX PRO / Ajax)" },
-  { value: "intercom", label: "Smart IP Θυροτηλεόραση (Hikvision / Dahua)" },
-  { value: "network", label: "Επαγγελματικό Δίκτυο / Wi-Fi (UniFi / TP-Link / MikroTik)" },
-  { value: "starlink", label: "Εγκατάσταση Starlink Satellite Internet" },
-  { value: "audio", label: "Smart Home & Sonos Audio Solutions" },
-  { value: "full", label: "Ολοκληρωμένο Έργο (Ασφάλεια + Δίκτυο + Starlink + Ήχος)" }
+  { value: "Κάμερες CCTV", label: "Κάμερες CCTV (Hikvision ColorVu / AcuSense / Dahua)" },
+  { value: "Σύστημα Συναγερμού", label: "Σύστημα Συναγερμού (Hikvision AX PRO / Ajax)" },
+  { value: "Smart IP Θυροτηλεόραση", label: "Smart IP Θυροτηλεόραση (Hikvision / Dahua)" },
+  { value: "Επαγγελματικό Δίκτυο / Wi-Fi", label: "Επαγγελματικό Δίκτυο / Wi-Fi (UniFi / TP-Link / MikroTik)" },
+  { value: "Εγκατάσταση Starlink", label: "Εγκατάσταση Starlink Satellite Internet" },
+  { value: "Smart Home & Sonos Audio", label: "Smart Home & Sonos Audio Solutions" },
+  { value: "Ολοκληρωμένο Έργο", label: "Ολοκληρωμένο Έργο (Ασφάλεια + Δίκτυο + Starlink + Ήχος)" }
 ];
 ---
+
 <section id="quote" class="w-full py-20 lg:py-24 bg-surface-container-low border-b border-outline-variant">
   <div class="max-w-[850px] mx-auto px-md md:px-lg">
-    
+
     <!-- Title -->
     <div class="text-center mb-10">
       <h2 class="text-headline-lg font-display text-on-surface tracking-tight mb-3">
@@ -23,21 +25,28 @@ const servicesList = [
     </div>
 
     <!-- Booking form -->
+    <!-- Note: We use a standard form, but handle submission via JS -->
     <form id="quote-form" class="bg-surface border border-outline-variant rounded-md p-6 md:p-10 shadow-sm flex flex-col gap-6">
       
+      <!-- Web3Forms Config -->
+      <!-- REPLACE 'YOUR_ACCESS_KEY_HERE' WITH YOUR ACTUAL KEY -->
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+      <input type="hidden" name="subject" value="Νέο Αίτημα Μελέτης από την Ιστοσελίδα">
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
+
         <!-- Input Name -->
         <div class="flex flex-col gap-2">
           <label for="q-name" class="font-mono-sm text-[12px] font-bold tracking-wider text-on-surface">
             Ονοματεπώνυμο *
           </label>
-          <input 
-            id="q-name" 
-            name="name" 
-            type="text" 
-            required 
-            placeholder="π.χ. Νίκος Καραχάλιος" 
+          <input
+            id="q-name"
+            name="name"
+            type="text"
+            required
+            placeholder="π.χ. Νίκος Καραχάλιος"
             class="px-4 py-3 border border-outline-variant rounded-xs bg-surface-container-low text-on-surface text-body-md outline-none focus:border-primary transition-all"
           />
         </div>
@@ -47,12 +56,12 @@ const servicesList = [
           <label for="q-phone" class="font-mono-sm text-[12px] font-bold tracking-wider text-on-surface">
             Τηλέφωνο Επικοινωνίας *
           </label>
-          <input 
-            id="q-phone" 
-            name="phone" 
-            type="tel" 
-            required 
-            placeholder="π.χ. 69XXXXXXXX" 
+          <input
+            id="q-phone"
+            name="phone"
+            type="tel"
+            required
+            placeholder="π.χ. 69XXXXXXXX"
             class="px-4 py-3 border border-outline-variant rounded-xs bg-surface-container-low text-on-surface text-body-md outline-none focus:border-primary transition-all"
           />
         </div>
@@ -62,12 +71,12 @@ const servicesList = [
           <label for="q-area" class="font-mono-sm text-[12px] font-bold tracking-wider text-on-surface">
             Περιοχή Εγκατάστασης *
           </label>
-          <input 
-            id="q-area" 
-            name="area" 
-            type="text" 
-            required 
-            placeholder="π.χ. Περιστέρι, Αιγάλεω, Ίλιον..." 
+          <input
+            id="q-area"
+            name="area"
+            type="text"
+            required
+            placeholder="π.χ. Περιστέρι, Αιγάλεω, Ίλιον..."
             class="px-4 py-3 border border-outline-variant rounded-xs bg-surface-container-low text-on-surface text-body-md outline-none focus:border-primary transition-all"
           />
         </div>
@@ -77,10 +86,10 @@ const servicesList = [
           <label for="q-service" class="font-mono-sm text-[12px] font-bold tracking-wider text-on-surface">
             Ενδιαφέρον για Υπηρεσία *
           </label>
-          <select 
-            id="q-service" 
-            name="service" 
-            required 
+          <select
+            id="q-service"
+            name="service"
+            required
             class="px-4 py-3 border border-outline-variant rounded-xs bg-surface-container-low text-on-surface text-body-md outline-none focus:border-primary transition-all"
           >
             <option value="">Επιλέξτε...</option>
@@ -95,11 +104,11 @@ const servicesList = [
           <label for="q-notes" class="font-mono-sm text-[12px] font-bold tracking-wider text-on-surface">
             Περιγραφή Αναγκών / Χώρου
           </label>
-          <textarea 
-            id="q-notes" 
-            name="notes" 
-            rows="4" 
-            placeholder="Αναφέρετε αν πρόκειται για οικία, πολυκατοικία, κατάστημα, αποθήκη ή γραφείο..." 
+          <textarea
+            id="q-notes"
+            name="notes"
+            rows="4"
+            placeholder="Αναφέρετε αν πρόκειται για οικία, πολυκατοικία, κατάστημα, αποθήκη ή γραφείο..."
             class="px-4 py-3 border border-outline-variant rounded-xs bg-surface-container-low text-on-surface text-body-md outline-none focus:border-primary transition-all resize-y"
           ></textarea>
         </div>
@@ -107,9 +116,10 @@ const servicesList = [
       </div>
 
       <!-- Submit button -->
-      <button 
-        type="submit" 
-        class="w-full bg-on-background text-surface font-mono-sm text-[13px] font-bold tracking-widest py-4.5 rounded-xs hover:bg-primary hover:text-on-primary transition-all shadow-sm"
+      <button
+        id="submit-btn"
+        type="submit"
+        class="w-full bg-on-background text-surface font-mono-sm text-[13px] font-bold tracking-widest py-4.5 rounded-xs hover:bg-primary hover:text-on-primary transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Υποβολή Αιτήματος Μελέτης
       </button>
@@ -127,12 +137,54 @@ const servicesList = [
 <script>
   const quoteForm = document.getElementById("quote-form") as HTMLFormElement | null;
   const statusPrompt = document.getElementById("form-success");
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement | null;
 
-  quoteForm?.addEventListener("submit", (event) => {
+  quoteForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
-    if (statusPrompt) {
-      statusPrompt.classList.remove("hidden");
+
+    // 1. Show loading state
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Αποστολή...";
     }
-    quoteForm.reset();
+
+    // 2. Collect Form Data
+    const formData = new FormData(quoteForm);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+      // 3. Send to Web3Forms API
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      });
+
+      const result = await response.json();
+
+      if (response.status === 200) {
+        // Success
+        if (statusPrompt) statusPrompt.classList.remove("hidden");
+        quoteForm.reset();
+      } else {
+        // Handle API errors
+        console.log(result);
+        alert("Παρουσιάστηκε πρόβλημα. Παρακαλώ δοκιμάστε ξανά.");
+      }
+    } catch (error) {
+      // Handle Network errors
+      console.log(error);
+      alert("Αποτυχία σύνδεσης στον διακομιστή.");
+    } finally {
+      // 4. Reset Button state
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Υποβολή Αιτήματος Μελέτης";
+      }
+    }
   });
 </script>
