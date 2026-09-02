@@ -56,6 +56,7 @@ const cctvCards = [
   title="Κάμερες CCTV & AI Ανάλυση"
   tags={[{ label: "HIKVISION FOCUS" }, { label: "DAHUA SOLUTIONS", variant: "outline" }]}
 >
+  <!-- 3 columns on Desktop, 2 on Tablet, 1 on Mobile -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {
       cctvCards.map((card) => (
@@ -67,18 +68,18 @@ const cctvCards = [
           bullets={card.bullets}
         >
           <!-- 
-            IMAGE OPTIMIZATION:
-            1. We use aspect-[4/3] to ensure the box is always a consistent shape.
-            2. We use bg-surface-container-lowest to fill any empty space.
-            3. We use object-contain for hardware so the product is NEVER cut off.
+            IMAGE FIX:
+            1. We use aspect-video (16:9). This matches most marketing banners.
+            2. We use object-cover so it fills the WHOLE width (no shrinking).
+            3. We removed padding (p-6) so the image reaches the edges.
           -->
-          <div slot="image" class="relative w-full aspect-[4/3] bg-surface-container-lowest overflow-hidden border-b border-outline-variant">
+          <div slot="image" class="relative w-full aspect-video overflow-hidden border-b border-outline-variant bg-surface-container-low">
             <Image
               src={card.image}
               alt={card.alt}
               width={800}
-              height={600}
-              class="w-full h-full object-contain p-6"
+              height={450} 
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
               decoding="async"
             />
