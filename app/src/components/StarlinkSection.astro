@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import NumberedSection from "./NumberedSection.astro";
-import starlinkImg from "../assets/starlink-logo.jpeg";
+import starlinkImg from "../assets/starlink.webp";
 ---
 
 <NumberedSection
@@ -19,7 +19,7 @@ import starlinkImg from "../assets/starlink-logo.jpeg";
         <span class="bg-primary-container text-on-primary-container px-2 py-1 rounded-sm font-bold">STARLINK</span>
         <span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded-sm">SATELLITE</span>
       </div>
-      <span class="text-mono-sm text-on-surface-variant font-mono-sm font-bold">HW.SL</span>
+      <span class="text-mono-sm text-on-surface-variant font-mono-sm font-bold"></span>
     </div>
 
     <!-- Contents Grid -->
@@ -57,13 +57,21 @@ import starlinkImg from "../assets/starlink-logo.jpeg";
         </ul>
       </div>
 
-      <!-- Image right -->
+      <!-- Image right (No Zoom, No Grayscale, Full Color) -->
       <div class="h-72 lg:h-auto border-t lg:border-t-0 lg:border-l border-outline-variant relative overflow-hidden min-h-[300px]">
         <Image
           src={starlinkImg}
           alt="Starlink satellite internet terminal installation"
-          class="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+          /* 
+             Optimized for performance: 
+             If your source is 1200x900, using width 800 is the 'sweet spot' 
+             for a full-height cover image on a split-grid.
+          */
+          width={800}
+          height={600}
+          class="w-full h-full object-cover"
           loading="lazy"
+          decoding="async"
         />
       </div>
 

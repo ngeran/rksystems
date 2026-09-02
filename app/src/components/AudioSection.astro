@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import NumberedSection from "./NumberedSection.astro";
-import sonosLogo from "../assets/Sonos-Logo.wine.svg";
+import sonosLogo from "../assets/sonos.webp"; 
 ---
 
 <NumberedSection
@@ -17,12 +17,12 @@ import sonosLogo from "../assets/Sonos-Logo.wine.svg";
         <span class="bg-primary-container text-on-primary-container px-2 py-1 rounded-sm font-bold">SONOS</span>
         <span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded-sm">ECOSYSTEM</span>
       </div>
-      <span class="text-mono-sm text-on-surface-variant font-mono-sm font-bold">AV.SNS</span>
+      <span class="text-mono-sm text-on-surface-variant font-mono-sm font-bold"></span>
     </div>
 
     <!-- Grid Contents -->
     <div class="grid grid-cols-1 lg:grid-cols-2">
-      <!-- Bullet details -->
+      <!-- Left: Bullet details -->
       <div class="p-8 flex flex-col gap-6">
         <div class="font-mono-sm text-headline-lg-mobile tracking-widest text-on-surface border-b border-outline-variant pb-4">
           ARCHITECTURAL SOUND
@@ -54,13 +54,20 @@ import sonosLogo from "../assets/Sonos-Logo.wine.svg";
         </ul>
       </div>
 
-      <!-- Image module -->
-      <div class="h-72 lg:h-auto border-t lg:border-t-0 lg:border-l border-outline-variant relative overflow-hidden min-h-[300px] flex items-center justify-center bg-surface-container-lowest/50">
+      <!-- Right: Image module (Matched to Starlink CSS) -->
+      <div class="h-72 lg:h-auto border-t lg:border-t-0 lg:border-l border-outline-variant relative overflow-hidden min-h-[300px]">
         <Image
           src={sonosLogo}
-          alt="Sonos Architectural Audio Logo"
-          class="w-full h-full max-w-[280px] object-contain p-12 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+          alt="Sonos Architectural Audio"
+          /* 
+             Using 800 width (matching Starlink) to ensure enough 
+             resolution for the 'object-cover' fill.
+          */
+          width={800} 
+          height={600} 
+          class="w-full h-full object-cover"
           loading="lazy"
+          decoding="async"
         />
       </div>
     </div>

@@ -3,14 +3,14 @@ import { Image } from "astro:assets";
 import NumberedSection from "./NumberedSection.astro";
 import FeatureCard from "./FeatureCard.astro";
 
-import colorvuImg from "../assets/colorvu-acusense.jpg";
-import nvrImg from "../assets/nvr-acuseek.jpeg";
-import dahuaImg from "../assets/dahua.jpg";
+import colorvuImg from "../assets/colorvue.webp";
+import nvrImg from "../assets/acuseek.webp";
+import dahuaImg from "../assets/dahua.webp";
 
 const cctvCards = [
   {
     badges: [{ label: "HIKVISION PRIMARY" }, { label: "CCTV AI", variant: "neutral" as const }],
-    code: "HW.CV3",
+    code: "",
     kicker: "COLORVU 3.0 & ACUSENSE AI",
     heading: "ColorVu 3.0 & AcuSense AI Dome Cameras",
     bullets: [
@@ -23,7 +23,7 @@ const cctvCards = [
   },
   {
     badges: [{ label: "AI AGENT CLOUD" }, { label: "CCTV AI", variant: "neutral" as const }],
-    code: "SW.NVR",
+    code: "",
     kicker: "ACUSEEK NVR & AI AGENT",
     heading: "Hikvision AcuSeek NVR & Elasticsearch AI Search",
     bullets: [
@@ -36,7 +36,7 @@ const cctvCards = [
   },
   {
     badges: [{ label: "DAHUA PRO ACTIVE" }, { label: "CCTV AI", variant: "neutral" as const }],
-    code: "HW.TIOC",
+    code: "",
     kicker: "DAHUA TIOC 4K SYSTEM",
     heading: "Dahua TiOC 4K Active Deterrence Surveillance",
     bullets: [
