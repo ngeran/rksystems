@@ -10,7 +10,7 @@ import dahuaImg from "../assets/dahua.webp";
 const cctvCards = [
   {
     badges: [{ label: "HIKVISION PRIMARY" }, { label: "CCTV AI", variant: "neutral" as const }],
-    code: "",
+    code: "SEC.HK1",
     kicker: "COLORVU 3.0 & ACUSENSE AI",
     heading: "ColorVu 3.0 & AcuSense AI Dome Cameras",
     bullets: [
@@ -23,7 +23,7 @@ const cctvCards = [
   },
   {
     badges: [{ label: "AI AGENT CLOUD" }, { label: "CCTV AI", variant: "neutral" as const }],
-    code: "",
+    code: "SEC.HK2",
     kicker: "ACUSEEK NVR & AI AGENT",
     heading: "Hikvision AcuSeek NVR & Elasticsearch AI Search",
     bullets: [
@@ -36,7 +36,7 @@ const cctvCards = [
   },
   {
     badges: [{ label: "DAHUA PRO ACTIVE" }, { label: "CCTV AI", variant: "neutral" as const }],
-    code: "",
+    code: "SEC.DH1",
     kicker: "DAHUA TIOC 4K SYSTEM",
     heading: "Dahua TiOC 4K Active Deterrence Surveillance",
     bullets: [
@@ -56,19 +56,33 @@ const cctvCards = [
   title="Κάμερες CCTV & AI Ανάλυση"
   tags={[{ label: "HIKVISION FOCUS" }, { label: "DAHUA SOLUTIONS", variant: "outline" }]}
 >
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {
       cctvCards.map((card) => (
-        <FeatureCard badges={card.badges} code={card.code} kicker={card.kicker} heading={card.heading} bullets={card.bullets}>
-          <Image
-            slot="image"
-            src={card.image}
-            alt={card.alt}
-            width={800}
-            height={600}
-            class="w-full h-full object-cover"
-            loading="lazy"
-          />
+        <FeatureCard 
+          badges={card.badges} 
+          code={card.code} 
+          kicker={card.kicker} 
+          heading={card.heading} 
+          bullets={card.bullets}
+        >
+          <!-- 
+            IMAGE OPTIMIZATION:
+            1. We use aspect-[4/3] to ensure the box is always a consistent shape.
+            2. We use bg-surface-container-lowest to fill any empty space.
+            3. We use object-contain for hardware so the product is NEVER cut off.
+          -->
+          <div slot="image" class="relative w-full aspect-[4/3] bg-surface-container-lowest overflow-hidden border-b border-outline-variant">
+            <Image
+              src={card.image}
+              alt={card.alt}
+              width={800}
+              height={600}
+              class="w-full h-full object-contain p-6"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </FeatureCard>
       ))
     }
