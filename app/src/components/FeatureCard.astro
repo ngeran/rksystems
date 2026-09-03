@@ -17,13 +17,13 @@ const { badges, code, kicker, heading, bullets, imageSrc, imageAlt = "" } = Astr
 
 <div class="border border-outline-variant bg-surface rounded-md overflow-hidden flex flex-col group shadow-sm transition-all">
   <!-- Image Container: Filters and Zooms removed -->
-  <div class="h-56 md:h-64 relative overflow-hidden bg-surface-container-low">
+  <div class="w-full sdpect-[4/3] relative overflow-hidden bg-surface-container-low flex items-center justify-center">
     <slot name="image">
       {imageSrc && (
         typeof imageSrc === 'string' ? (
           <img src={imageSrc} alt={imageAlt} loading="lazy" class="w-full h-full object-cover" />
         ) : (
-          <Image src={imageSrc} alt={imageAlt} width={800} height={600} class="w-full h-full object-cover" />
+        <Image src={imageSrc} alt={imageAlt} width={[400, 800, 1200]} sizes="(min-width: 768px) 50vw, 100vw" class="max-w-full max-h-full object-contain" />
         )
       )}
     </slot>
